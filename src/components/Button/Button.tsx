@@ -36,7 +36,7 @@ export const Button: React.FC<ButtonProps> = ({
           large: "px-6 py-3 text-lg",
         }[size],
         disabled ? "opacity-50 cursor-not-allowed" : "",
-        className
+        className,
       )}
       onClick={onClick}
       disabled={disabled}
