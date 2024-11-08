@@ -24,19 +24,20 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       className={classNames(
-        "rounded font-medium transition-colors",
+        "ink-rounded ink-font-medium ink-transition-colors",
         {
-          primary: "bg-blue-600 text-white hover:bg-blue-700",
-          secondary: "bg-gray-600 text-white hover:bg-gray-700",
-          outline: "border-2 border-blue-600 text-blue-600 hover:bg-blue-50",
+          primary: "ink-bg-primary ink-text-white hover:ink-bg-primary/80",
+          secondary: "ink-bg-gray-600 ink-text-white hover:ink-bg-gray-700",
+          outline:
+            "ink-border-2 ink-border-blue-600 ink-text-blue-600 hover:ink-bg-blue-50",
         }[variant],
         {
-          small: "px-3 py-1 text-sm",
-          medium: "px-4 py-2",
-          large: "px-6 py-3 text-lg",
+          small: "ink-px-3 ink-py-1 ink-text-sm",
+          medium: "ink-px-4 ink-py-2",
+          large: "ink-px-6 ink-py-3 ink-text-lg",
         }[size],
-        disabled ? "opacity-50 cursor-not-allowed" : "",
-        className,
+        disabled ? "ink-opacity-50 ink-cursor-not-allowed" : "",
+        className
       )}
       onClick={onClick}
       disabled={disabled}
