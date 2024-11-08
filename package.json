@@ -8,6 +8,15 @@
   "files": [
     "/dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./style.css": "./dist/style.css",
+    "./tailwind.config.mjs": "./tailwind.config.mjs"
+  },
   "scripts": {
     "build": "tsc && vite build",
     "storybook": "storybook dev -p 6006",
@@ -17,7 +26,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,css,scss}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,css,scss}\"",
     "test": "playwright test",
-    "fix:all": "pnpm run lint:fix && pnpm run format"
+    "fix:all": "pnpm run lint:fix && pnpm run format",
+    "prepublish": "build"
   },
   "keywords": [],
   "author": "",
@@ -52,7 +62,9 @@
     "vite-plugin-dts": "^4.3.0"
   },
   "peerDependencies": {
-    "react": "^18"
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwindcss": "^3"
   },
   "dependencies": {
     "clsx": "^2.1.1",
