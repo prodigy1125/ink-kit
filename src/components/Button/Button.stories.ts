@@ -13,7 +13,7 @@ const meta: Meta<ButtonProps> = {
   argTypes: {
     variant: { control: "select" },
   },
-  args: { onClick: fn() },
+  args: { onClick: fn(), size: "md" },
 };
 
 export default meta;
@@ -35,21 +35,20 @@ export const Secondary: Story = {
 
 export const Outline: Story = {
   args: {
-    variant: "outline",
     children: "Button",
   },
 };
 
-export const Large: Story = {
+export const Medium: Story = {
   args: {
-    size: "large",
+    size: "md",
     children: "Button",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: "small",
+    size: "sm",
     children: "Button",
   },
 };
