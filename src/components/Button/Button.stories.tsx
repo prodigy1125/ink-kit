@@ -47,3 +47,21 @@ export const Rounded: Story = {
     children: <InkIcon.Deposit />,
   },
 };
+
+export const WithMinimumWidth: Story = {
+  args: {
+    className: "ink-min-w-[350px]",
+    children: "Button",
+    iconLeft: <InkIcon.Deposit />,
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    as: "a",
+    href: "https://inkonchain.com",
+    target: "_blank",
+    children: "inkonchain.com",
+    iconRight: <InkIcon.Arrow className="ink-rotate-[225deg]" />,
+  },
+};

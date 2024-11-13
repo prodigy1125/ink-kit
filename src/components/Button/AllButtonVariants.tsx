@@ -1,8 +1,13 @@
 import { Button, type ButtonProps } from "./index";
 
-export type AllButtonVariantsProps = Exclude<ButtonProps, "variant" | "size">;
+export type AllButtonVariantsProps = Exclude<
+  ButtonProps<"button" | "a">,
+  "variant" | "size"
+>;
 
-export const AllButtonVariants: React.FC<AllButtonVariantsProps> = (props) => {
+export const AllButtonVariants: React.FC<AllButtonVariantsProps> = ({
+  ...props
+}) => {
   return (
     <div className="ink-flex ink-flex-col ink-items-center ink-gap-2">
       <div className="ink-flex ink-gap-2">
