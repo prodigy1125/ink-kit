@@ -35,6 +35,7 @@ export default defineConfig({
       /** "react/jsx-runtime" is needed to support both React 18 and 19, plus it makes the bundle smaller */
       external: [
         "react/jsx-runtime",
+        "wagmi/connectors",
         "wagmi/chains",
         ...Object.keys(peerDependencies),
       ],
