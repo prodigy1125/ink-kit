@@ -44,7 +44,7 @@ export const InternalButton = <
     >
       <div
         className={classNames(
-          "ink-w-full ink-flex ink-items-center ink-gap-1.5",
+          "ink-w-full ink-flex-1 ink-flex ink-items-center ink-gap-1.5",
           variantClassNames(variant as InternalButtonVariant, {
             wallet: "ink-justify-center",
             "wallet-inside": "ink-justify-start",

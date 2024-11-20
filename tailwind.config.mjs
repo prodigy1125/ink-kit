@@ -60,6 +60,7 @@ const config = {
         error: "var(--ink-status-error)",
         "error-bg": "var(--ink-status-error-bg)",
       },
+      "default-app-icon-gradient": "var(--ink-default-app-icon-gradient)",
     },
     fontSize: {
       h1: ["var(--ink-font-size-h1)", "var(--ink-font-line-height-h1)"],
@@ -96,6 +97,7 @@ const config = {
     boxShadow: {
       menu: "var(--ink-box-shadow-menu)",
       modal: "var(--ink-box-shadow-modal)",
+      layout: "var(--ink-box-shadow-layout)",
     },
   },
   plugins: [],

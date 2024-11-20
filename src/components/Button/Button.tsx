@@ -1,4 +1,4 @@
-import React, { type ElementType } from "react";
+import React, { PropsWithChildren, type ElementType } from "react";
 import {
   classNames,
   resetClasses,
@@ -11,7 +11,8 @@ const DEFAULT_BUTTON_TAG = "button" as const;
 export type ButtonProps<T extends ElementType = typeof DEFAULT_BUTTON_TAG> =
   PolymorphicProps<T> & OwnButtonProps;
 
-export interface OwnButtonProps {
+export interface OwnButtonProps extends PropsWithChildren {
+  className?: string;
   variant?: "primary" | "secondary";
   size?: "sm" | "md";
   rounded?: "full" | "default";
@@ -21,6 +22,7 @@ export interface OwnButtonProps {
 
 export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
   as,
+  asProps,
   className,
   children,
   variant = "primary",
@@ -57,6 +59,7 @@ export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
         }),
         className
       )}
+      {...asProps}
       {...restProps}
     >
       {iconLeft && (
@@ -84,7 +87,8 @@ export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
       ) : (
         <div
           className={classNames(
-            "ink-w-full",
+            "ink-flex ink-items-center ink-justify-center ink-gap-1.5",
+            !iconLeft && !iconRight && "ink-w-full",
             variantClassNames(size, {
               /** This here accomplishes the "snug" spacing, which makes the box height as tight as possible */
               sm: "-ink-my-0.5",

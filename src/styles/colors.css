@@ -11,8 +11,8 @@
   --ink-background-light-invisible: rgb(255, 255, 255, 0);
   --ink-background-container: color-mix(
     in srgb,
-    var(--ink-background-dark),
-    transparent 6%
+    rgb(113, 50, 245),
+    transparent 94%
   );
 
   /* Button */
@@ -81,5 +81,11 @@
     in srgb,
     var(--ink-status-error),
     transparent 92%
+  );
+
+  --ink-default-app-icon-gradient: radial-gradient(
+    111.22% 733.89% at 97.72% -9.91%,
+    #160f1f 0%,
+    #7132f5 100%
   );
 }

@@ -6,6 +6,7 @@ export { default as Arrow } from "./Type=Arrow.svg?react";
 export { default as Chevron } from "./Type=Chevron.svg?react";
 export { default as Close } from "./Type=Close.svg?react";
 export { default as Copy } from "./Type=Copy.svg?react";
+export { default as DefaultAppIcon } from "./Type=DefaultAppIcon.svg?react";
 export { default as Deposit } from "./Type=Deposit.svg?react";
 export { default as Disconnect } from "./Type=Disconnect.svg?react";
 export { default as Error } from "./Type=Error.svg?react";
