@@ -238,8 +238,8 @@ progress.ink-preflight {
 Correct the cursor style of increment and decrement buttons in Safari.
 */
 
-::-webkit-inner-spin-button.ink-preflight,
-::-webkit-outer-spin-button.ink-preflight {
+.ink-preflight::-webkit-inner-spin-button,
+.ink-preflight::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -257,7 +257,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 Remove the inner padding in Chrome and Safari on macOS.
 */
 
-::-webkit-search-decoration.ink-preflight {
+.ink-preflight::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -266,7 +266,7 @@ Remove the inner padding in Chrome and Safari on macOS.
 2. Change font properties to `inherit` in Safari.
 */
 
-::-webkit-file-upload-button.ink-preflight {
+.ink-preflight::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
