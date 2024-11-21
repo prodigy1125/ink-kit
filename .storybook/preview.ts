@@ -26,6 +26,11 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        order: ["Welcome", "*"],
+      },
+    },
   },
   decorators: [
     withThemeByClassName<ReactRenderer>({
