@@ -62,7 +62,7 @@ export const WithMinimumWidth: Story = {
 export const AsLink: Story = {
   args: {
     as: "a",
-    href: "https://inkonchain.com",
+    href: "/test",
     target: "_blank",
     children: "inkonchain.com",
     iconRight: <InkIcon.Arrow className="ink-rotate-[225deg]" />,

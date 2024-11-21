@@ -18,6 +18,13 @@
   /* border-color: theme('borderColor.DEFAULT', currentColor); 2 */
 }
 
+/* This one is copied over from above, needed to apply to a lot of child elements */
+.ink-preflight *,
+.ink-preflight *::before,
+.ink-preflight *::after {
+  box-sizing: border-box; /* 1 */
+}
+
 .ink-preflight::before,
 .ink-preflight::after {
   --tw-content: "";

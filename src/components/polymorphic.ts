@@ -1,13 +1,9 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementType,
-  PropsWithChildren,
-} from "react";
+import { ComponentPropsWithoutRef, ElementType } from "react";
 
-interface PolymorphicAsProp<E extends ElementType> {
+export type PolymorphicDefinition<E extends ElementType> = {
   as?: E;
-}
+  asProps?: ComponentPropsWithoutRef<E>;
+};
 
-export type PolymorphicProps<E extends ElementType> = PropsWithChildren<
-  ComponentPropsWithoutRef<E> & PolymorphicAsProp<E>
->;
+export type PolymorphicProps<E extends ElementType> =
+  ComponentPropsWithoutRef<E> & PolymorphicDefinition<E>;
