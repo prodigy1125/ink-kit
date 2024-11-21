@@ -1,0 +1,68 @@
+import { Meta } from "@storybook/blocks";
+import Banner from "../images/banner.webp?base64";
+
+<Meta title="Welcome" />
+
+<img
+  src={Banner}
+  alt="Inkkit Banner"
+  style={{ width: "100%", marginBottom: "2rem", borderRadius: "8px" }}
+/>
+
+# Welcome to Inkkit
+
+Inkkit is an onchain-focused SDK that delivers a delightful developer experience with ready-to-use app layout templates, themes, and magical animated components.
+
+## Install
+
+```bash
+npm install @inkonchain/ink-kit
+# or
+pnpm install @inkonchain/ink-kit
+```
+
+## Usage
+
+```tsx
+// Import styles first at the root of your project (required)
+import "@inkonchain/ink-kit/style.css";
+```
+
+```tsx
+// Import components as needed
+import { Button } from "@inkonchain/ink-kit";
+
+function App() {
+  return (
+    <div>
+      <Button onClick={() => {}} size="md" variant="secondary">
+        Ship It
+      </Button>
+    </div>
+  );
+}
+```
+
+Note: Inkkit classes are prefixed with `ink-` and can be customized using CSS variables instead of Tailwind classes. They should be imported first so that your own custom classes are taking precedence.
+
+## Key Features
+
+- 🎨 **Customizable app layout templates**
+- ✨ **Magical animated components**
+- 🎭 **Vibrant themes**
+- ⛓️ **Onchain-focused development**
+- 🚀 **Efficient developer experience**
+- 📱 **Polished, engaging interfaces**
+
+## Theming
+
+Complete theming guide coming soon.
+
+## Resources
+
+- **Documentation**: Browse components and examples in the sidebar
+- **Contributing**: Visit our [GitHub repository](https://github.com/inkonchain/ink-kit)
+
+## WIP Notice
+
+This is a work in progress: we are constantly adding new components, improving the developer experience, and fixing bugs.
