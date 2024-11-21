@@ -26,7 +26,9 @@ pnpm install @inkonchain/ink-kit
 ```tsx
 // Import styles first at the root of your project (required)
 import "@inkonchain/ink-kit/style.css";
+```
 
+```tsx
 // Import components as needed
 import { Button } from "@inkonchain/ink-kit";
 
