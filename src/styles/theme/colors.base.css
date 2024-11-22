@@ -1,3 +1,8 @@
+/*
+  Colors in this file are automatically computed using the other variables.
+  You can override them in a theme if you need specific colors, but these should look good without it.
+*/
+
 :root {
   /* Background */
   --ink-background-dark-transparent: color-mix(
