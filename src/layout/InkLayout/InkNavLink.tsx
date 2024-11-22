@@ -35,7 +35,7 @@ export const InkNavLink = <
       href={href}
       className={classNames(
         Component === DEFAULT_COMPONENT_TYPE &&
-          "ink:flex ink:items-center ink:gap-1.5 ink:px-1.5 ink:py-1.5 ink:text-inherit ink:no-underline ink:rounded-16 ink:transition-colors ink:duration-200 ink:hover:bg-background-container",
+          "ink:flex ink:items-center ink:gap-1.5 ink:px-1.5 ink:py-1.5 ink:text-inherit ink:no-underline ink:rounded-md ink:transition-colors ink:duration-200 ink:hover:bg-background-container",
         className
       )}
       {...asProps}

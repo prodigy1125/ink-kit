@@ -37,7 +37,7 @@ export const InkLayout: React.FC<InkLayoutProps> = ({
             {sideNavigation}
           </div>
         )}
-        <div className="ink:flex-1 ink:bg-background-light ink:rounded-24 ink:shadow-layout ink:p-3 ink:mr-5">
+        <div className="ink:flex-1 ink:bg-background-light ink:rounded-lg ink:shadow-layout ink:p-3 ink:mr-5">
           {children}
         </div>
       </div>
