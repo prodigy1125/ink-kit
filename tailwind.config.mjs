@@ -17,7 +17,6 @@ export const spacing = {
 /** @satisfies {import('tailwindcss').Config} */
 const config = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false,
   prefix: "ink-",
   theme: {
     gap: spacing,
