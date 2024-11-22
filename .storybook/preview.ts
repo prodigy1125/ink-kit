@@ -35,11 +35,11 @@ const preview: Preview = {
   decorators: [
     withThemeByClassName<ReactRenderer>({
       themes: {
-        light: "ink-light-theme",
-        dark: "ink-dark-theme",
-        contrast: "ink-contrast-theme",
-        neo: "ink-neo-theme",
-        morpheus: "ink-morpheus-theme",
+        light: "ink:light-theme",
+        dark: "ink:dark-theme",
+        contrast: "ink:contrast-theme",
+        neo: "ink:neo-theme",
+        morpheus: "ink:morpheus-theme",
       },
       defaultTheme: "light",
     }),

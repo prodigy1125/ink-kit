@@ -1,5 +1,5 @@
 :root,
-:root.ink-contrast-theme {
+:root.ink\:contrast-theme {
   /* Background */
   --ink-background-dark: rgba(221, 221, 221, 1);
   --ink-background-light: rgba(255, 255, 255, 1);

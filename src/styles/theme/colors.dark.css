@@ -1,5 +1,5 @@
 :root,
-:root.ink-dark-theme {
+:root.ink\:dark-theme {
   /* Background */
   --ink-background-dark: rgb(22, 15, 31);
   --ink-background-light: rgb(33, 26, 41);
@@ -19,6 +19,10 @@
   --ink-status-error: rgb(236, 109, 109);
 }
 
+/*
+  This allow us to use the dark theme over the light theme by default, depending on user preference.
+  The overrides should _exactly_ match the variables above.
+*/
 @media (prefers-color-scheme: dark) {
   :root {
     /* Background */
