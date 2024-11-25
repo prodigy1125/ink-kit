@@ -31,7 +31,13 @@ const colors = [
 const customTwMerge = extendTailwindMerge({
   override: {
     classGroups: {
-      rounded: ["rounded-8", "rounded-16", "rounded-24", "rounded-full"],
+      rounded: [
+        "rounded-xs",
+        "rounded-sm",
+        "rounded-md",
+        "rounded-lg",
+        "rounded-full",
+      ],
       "font-size": [
         "text-h1",
         "text-h2",

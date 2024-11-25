@@ -50,9 +50,11 @@
 
 @theme {
   /* Fonts */
+  --font-*: initial;
   --font-default: "Plus Jakarta Sans";
 
   /* Colors */
+  --color-*: initial;
   --color-background-dark: var(--ink-background-dark);
   --color-background-dark-transparent: var(--ink-background-dark-transparent);
   --color-background-container: var(--ink-background-container);
@@ -84,6 +86,7 @@
   --color-default-app-icon-gradient: var(--ink-default-app-icon-gradient);
 
   /* Typography */
+  --text-*: initial;
   --text-h1: 72px;
   --text-h1--line-height: 72px;
 
@@ -128,12 +131,15 @@
   --spacing-16: 128px;
 
   /* Radius */
+  --radius-*: initial;
   --radius-full: 9999px;
-  --radius-24: 24px;
-  --radius-16: 16px;
-  --radius-8: 8px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
 
   /* Shadows */
+  --shadow-*: initial;
   --shadow-menu: 0px 8px 24px -8px #160f1f1a;
   --shadow-modal: 0px 16px 64px -32px #160f1f1a;
   --shadow-layout: 0px 16px 64px -32px #160f1f0d;

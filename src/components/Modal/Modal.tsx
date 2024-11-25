@@ -73,7 +73,7 @@ export const Modal = <TOnCloseProps,>({
             transition
             className={classNames(
               "ink:flex ink:flex-col ink:justify-between ink:gap-3 ink:p-3",
-              "ink:bg-background-light ink:shadow-modal ink:rounded-24",
+              "ink:bg-background-light ink:shadow-modal ink:rounded-lg",
               "ink:duration-200 ink:ease-out ink:data-closed:scale-95 ink:data-closed:opacity-0",
               variantClassNames(size, {
                 lg: "ink:min-w-[320px] ink:sm:min-w-[640px] ink:min-h-[480px] ink:max-w-4xl",
