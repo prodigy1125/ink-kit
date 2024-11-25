@@ -41,8 +41,8 @@ export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
         }),
         variantClassNames(rounded, {
           full: variantClassNames(size, {
-            sm: "ink:rounded-full ink:px-1.5 ink:py-1.5",
-            md: "ink:rounded-full ink:px-2.5 ink:py-2.5",
+            sm: "ink:rounded-full ink:p-1.5",
+            md: "ink:rounded-full ink:p-2",
           }),
           default: "",
         }),
@@ -59,7 +59,14 @@ export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
     >
       {iconLeft && <div className="ink:size-3 ink:-my-1">{iconLeft}</div>}
       {rounded === "full" ? (
-        <div className="ink:size-3">{children}</div>
+        <div
+          className={variantClassNames(size, {
+            sm: "ink:size-3",
+            md: "ink:size-4",
+          })}
+        >
+          {children}
+        </div>
       ) : (
         <div
           className={classNames(
