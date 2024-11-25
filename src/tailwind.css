@@ -89,30 +89,51 @@
   --text-*: initial;
   --text-h1: 72px;
   --text-h1--line-height: 72px;
+  --text-h1--font-weight: 400;
 
   --text-h2: 32px;
   --text-h2--line-height: 36px;
+  --text-h2--font-weight: 700;
 
   --text-h3: 24px;
   --text-h3--line-height: 28px;
+  --text-h3--font-weight: 700;
 
   --text-h4: 20px;
   --text-h4--line-height: 24px;
+  --text-h4--font-weight: 700;
 
   --text-body-1: 18px;
   --text-body-1--line-height: 24px;
+  --text-body-1--font-weight: 400;
 
-  --text-body-2: 16px;
-  --text-body-2--line-height: 20px;
+  --text-body-2-regular: 16px;
+  --text-body-2-regular--line-height: 20px;
+  --text-body-2-regular--font-weight: 400;
 
-  --text-body-3: 14px;
-  --text-body-3--line-height: 18px;
+  --text-body-2-bold: 16px;
+  --text-body-2-bold--line-height: 20px;
+  --text-body-2-bold--font-weight: 700;
 
-  --text-caption: 12px;
-  --text-caption--line-height: 16px;
+  --text-body-3-regular: 14px;
+  --text-body-3-regular--line-height: 18px;
+  --text-body-3-regular--font-weight: 400;
+
+  --text-body-3-bold: 14px;
+  --text-body-3-bold--line-height: 18px;
+  --text-body-3-bold--font-weight: 700;
+
+  --text-caption-1-regular: 12px;
+  --text-caption-1-regular--line-height: 16px;
+  --text-caption-1-regular--font-weight: 400;
+
+  --text-caption-1-bold: 12px;
+  --text-caption-1-bold--line-height: 16px;
+  --text-caption-1-bold--font-weight: 700;
 
   --text-caption-2: 11px;
   --text-caption-2--line-height: 16px;
+  --text-caption-2--font-weight: 400;
 
   /* Spacing */
   --spacing-*: initial;
