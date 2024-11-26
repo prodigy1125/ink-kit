@@ -87,14 +87,10 @@ const ConnectedWalletSection = ({ address }: { address: Address }) => {
             </div>
           </div>
           <div>
-            <Button
-              as="a"
-              href="https://inkonchain.com/bridge"
-              target="_blank"
-              variant="primary"
-              rounded="full"
-            >
-              <InkIcon.Deposit />
+            <Button asChild variant="primary" rounded="full">
+              <a href="https://inkonchain.com/bridge" target="_blank">
+                <InkIcon.Deposit />
+              </a>
             </Button>
           </div>
         </div>

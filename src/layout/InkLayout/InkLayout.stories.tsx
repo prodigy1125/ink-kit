@@ -1,20 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { InkLayout, InkLayoutProps } from "./InkLayout";
-import { Button, InkIcon, SegmentedControl } from "../..";
-import { InkLayoutSideNav } from "./InkLayoutSideNav";
+import { InkIcon, SegmentedControl } from "../..";
+import { InkLayout, InkLayoutProps, InkLayoutSideNav } from "./index";
 
 const SideNav = () => {
   return (
     <InkLayoutSideNav
       links={[
         {
-          label: "Home",
+          children: "Home",
           href: "#home",
           icon: <InkIcon.Home />,
           target: "_self",
         },
         {
-          label: "Settings",
+          children: "Settings",
           href: "#settings",
           icon: <InkIcon.Settings />,
           target: "_self",
@@ -28,8 +27,8 @@ const TopNav = () => {
   return (
     <SegmentedControl
       options={[
-        { label: "Home", value: "home", selectedByDefault: true },
-        { label: "Settings", value: "settings" },
+        { children: "Home", value: "home", selectedByDefault: true },
+        { children: "Settings", value: "settings" },
       ]}
       onOptionChange={() => {}}
     />
@@ -64,22 +63,20 @@ export const SideNavWithCustomButtons: Story = {
   args: {
     sideNavigation: (
       <InkLayoutSideNav
-        linkAs={{
-          as: Button,
-          asProps: { variant: "primary", as: "a", target: "_self" },
-        }}
         links={[
           {
-            label: "Home",
+            children: <a className="ink:text-button-primary!">Home</a>,
             href: "#home",
             icon: <InkIcon.Home />,
             target: "_self",
+            asChild: true,
           },
           {
-            label: "Settings",
+            children: <a className="ink:text-button-primary!">Settings</a>,
             href: "#settings",
             icon: <InkIcon.Settings />,
             target: "_self",
+            asChild: true,
           },
         ]}
       />

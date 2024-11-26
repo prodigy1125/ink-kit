@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Modal, ModalProps } from "./Modal";
 import { Button } from "../Button";
-import { ModalProvider } from "./ModalContext";
-import { useModalContext } from "./ModalContext";
+import {
+  ModalProvider,
+  useModalContext,
+  Modal,
+  type ModalProps,
+} from "./index";
 import { fn } from "@storybook/test";
 import { ModalLayout } from ".";
 

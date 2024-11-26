@@ -1,39 +1,31 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { classNames, variantClassNames } from "../../util/classes";
 import { DisplayOnProps } from "../../util/theme";
-import { PolymorphicDefinition } from "../polymorphic";
+import { Slot } from "../Slot";
 
-export type SegmentedControlProps<
-  TOptionValue extends string,
-  TButtonAs extends React.ElementType = "button",
-> = DisplayOnProps & {
-  options: SegmentedControlOption<TOptionValue, TButtonAs>[];
-  onOptionChange: (
-    option: SegmentedControlOption<TOptionValue, TButtonAs>,
-    index: number
-  ) => void;
-  variableTabWidth?: boolean;
-};
+export type SegmentedControlProps<TOptionValue extends string> =
+  DisplayOnProps & {
+    options: SegmentedControlOption<TOptionValue>[];
+    onOptionChange: (
+      option: SegmentedControlOption<TOptionValue>,
+      index: number
+    ) => void;
+    variableTabWidth?: boolean;
+  };
 
-export interface SegmentedControlOption<
-  TOptionValue extends string,
-  TButtonAs extends React.ElementType = "button",
-> {
-  label: React.ReactNode;
+export interface SegmentedControlOption<TOptionValue extends string> {
+  children: React.ReactNode;
   value: TOptionValue;
   selectedByDefault?: boolean;
-  props?: PolymorphicDefinition<TButtonAs>;
+  asChild?: boolean;
 }
 
-export const SegmentedControl = <
-  TOptionValue extends string,
-  TButtonAs extends React.ElementType = "button",
->({
+export const SegmentedControl = <TOptionValue extends string>({
   options,
   onOptionChange,
   variableTabWidth,
   displayOn = "light",
-}: SegmentedControlProps<TOptionValue, TButtonAs>) => {
+}: SegmentedControlProps<TOptionValue>) => {
   const itemsRef = useRef<Array<HTMLButtonElement | null>>([]);
   const [selectedOption, setSelectedOption] = useState<TOptionValue | null>(
     options.find((opt) => opt.selectedByDefault)?.value ?? null
@@ -99,33 +91,28 @@ export const SegmentedControl = <
         )}
       >
         {options.map((option, index) => {
-          const { as, asProps } = option.props ?? {};
-
-          const ButtonComponent = as ?? "button";
+          const ButtonComponent = option.asChild ? Slot : "button";
 
           return (
             <ButtonComponent
-              {...asProps}
               className={classNames(
                 "ink:h-full ink:box-border ink:rounded-full ink:relative ink:z-10 ink:transition-colors ink:duration-200 ink:hover:cursor-pointer ink:select-none ink:no-underline ink:flex ink:items-center ink:justify-center",
                 selectedOption === option.value
                   ? "ink:text-text-default"
                   : "ink:text-text-on-secondary",
-                variableTabWidth ? "ink:px-3" : "ink:px-4",
-                asProps?.className
+                variableTabWidth ? "ink:px-3" : "ink:px-4"
               )}
               ref={(el) => {
                 itemsRef.current[index] = el;
               }}
               key={option.value}
-              onClick={(event) => {
+              onClick={() => {
                 setSelectedOption(option.value);
                 onOptionChange(option, index);
-                asProps?.onClick?.(event);
               }}
               draggable={false}
             >
-              {option.label}
+              {option.children}
             </ButtonComponent>
           );
         })}

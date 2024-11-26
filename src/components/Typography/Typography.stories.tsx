@@ -16,7 +16,7 @@ const variants = [
   "caption-2",
 ] as const;
 
-const meta: Meta<TypographyProps<"button" | "h1" | "h2" | "h3" | "h4">> = {
+const meta: Meta<TypographyProps> = {
   title: "Design/Typography",
   decorators: [
     (Story, { args }) => (

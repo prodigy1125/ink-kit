@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ConnectWallet, type ConnectWalletProps } from "./ConnectWallet";
+import { ConnectWallet, type ConnectWalletProps } from "./index";
 import { WalletProvider } from "../../decorators/WalletProvider";
 
 const meta: Meta<ConnectWalletProps> = {
