@@ -62,7 +62,7 @@ To specify which theme to use, add the `ink:THEME_ID` to your document root:
   ...
 ```
 
-If you want to programatically set this value, you can use the `useInkThemeClass`:
+If you want to programmatically set this value, you can use the `useInkThemeClass`:
 
 ```tsx
 const theme = getMyCurrentTheme();
@@ -84,7 +84,7 @@ To see examples on specific colors that you can override, check the following [t
 
 ## Resources
 
-- **Documentation**: Visit our [Storybook](https://inkkit.inkonchain.com/)
+- **Documentation**: Visit our [Storybook](https://ink-kit.inkonchain.com/)
 - **Contributing**: Visit our [GitHub repository](https://github.com/inkonchain/ink-kit)
 
 ## WIP Notice
