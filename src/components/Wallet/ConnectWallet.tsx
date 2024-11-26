@@ -77,12 +77,12 @@ const ConnectedWalletSection = ({ address }: { address: Address }) => {
   return (
     <>
       {(isLoading || isSuccess) && (
-        <div className="ink:text-body-2 ink:font-medium ink:p-1.5 ink:bg-background-container ink:rounded-md ink:flex ink:gap-1.5 ink:font-default">
+        <div className="ink:text-body-2-bold ink:p-1.5 ink:bg-background-container ink:rounded-md ink:flex ink:gap-1.5 ink:font-default">
           <div className="ink:flex ink:flex-col ink:flex-1">
-            <div className="ink:text-text-muted ink:text-caption ink:font-bold">
+            <div className="ink:text-text-muted ink:text-caption-1-bold">
               Balance
             </div>
-            <div className="ink:text-h4 ink:font-bold ink:text-text-default">
+            <div className="ink:text-h4 ink:text-text-default">
               {isSuccess ? `${balance.value} ${balance.symbol}` : "..."}
             </div>
           </div>

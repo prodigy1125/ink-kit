@@ -33,10 +33,10 @@ export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
   return (
     <Component
       className={classNames(
-        "ink:rounded-full ink:font-bold ink:font-default ink:transition-colors ink:hover:cursor-pointer ink:disabled:cursor-not-allowed ink:duration-100",
+        "ink:rounded-full ink:font-default ink:transition-colors ink:hover:cursor-pointer ink:disabled:cursor-not-allowed ink:duration-100",
         "ink:flex ink:items-center ink:justify-center ink:gap-1 ink:select-none ink:no-underline",
         variantClassNames(size, {
-          sm: "ink:px-3 ink:py-2 ink:text-body-2",
+          sm: "ink:px-3 ink:py-2 ink:text-body-2-bold",
           md: "ink:px-4 ink:py-3 ink:text-h4",
         }),
         variantClassNames(rounded, {
@@ -62,7 +62,7 @@ export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
         <div
           className={variantClassNames(size, {
             sm: "ink:size-3",
-            md: "ink:size-4",
+            md: "ink:size-3 ink:m-0.5",
           })}
         >
           {children}

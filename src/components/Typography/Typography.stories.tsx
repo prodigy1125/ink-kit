@@ -7,9 +7,12 @@ const variants = [
   "h3",
   "h4",
   "body-1",
-  "body-2",
-  "body-3",
-  "caption",
+  "body-2-regular",
+  "body-2-bold",
+  "body-3-regular",
+  "body-3-bold",
+  "caption-1-regular",
+  "caption-1-bold",
   "caption-2",
 ] as const;
 

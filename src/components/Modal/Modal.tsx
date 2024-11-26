@@ -86,7 +86,7 @@ export const Modal = <TOnCloseProps,>({
                 "ink:w-full ink:flex ink:items-center ink:justify-between"
               )}
             >
-              <div className="ink:font-bold ink:text-h4">{title}</div>
+              <div className="ink:text-h4">{title}</div>
               <InkIcon.Close
                 className="ink:cursor-pointer ink:size-3"
                 onClick={() => handleClose()}

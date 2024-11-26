@@ -88,7 +88,7 @@ export const SegmentedControl = <
       )}
       <div
         className={classNames(
-          "ink:grid ink:h-6 ink:grid-flow-col ink:text-body-2 ink:font-bold ink:rounded-full",
+          "ink:grid ink:h-6 ink:grid-flow-col ink:text-body-2-bold ink:rounded-full",
           variantClassNames(displayOn, {
             light: "ink:bg-background-container",
             dark: "ink:bg-background-light",
