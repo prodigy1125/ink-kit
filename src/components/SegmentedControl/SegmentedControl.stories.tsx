@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { SegmentedControl, SegmentedControlProps } from "./SegmentedControl";
+import { SegmentedControl, SegmentedControlProps } from "./index";
 
-const meta: Meta<SegmentedControlProps<string, "button" | "a">> = {
+const meta: Meta<SegmentedControlProps<string>> = {
   title: "Components/SegmentedControl",
   component: SegmentedControl,
   tags: ["autodocs"],
@@ -10,16 +10,16 @@ const meta: Meta<SegmentedControlProps<string, "button" | "a">> = {
     onOptionChange: fn(),
     options: [
       {
-        label: "First",
+        children: "First",
         value: "first",
         selectedByDefault: true,
       },
       {
-        label: "Second",
+        children: "Second",
         value: "second",
       },
       {
-        label: "Third",
+        children: "Third",
         value: "third",
       },
     ],
@@ -38,7 +38,7 @@ export const VariableTabWidth: Story = {
     variableTabWidth: true,
     options: Array.from(new Array(5)).map((_, i) => ({
       selectedByDefault: i === 0,
-      label: (i + 1).toString().repeat(i + 1),
+      children: (i + 1).toString().repeat(i + 1),
       value: (i + 1).toString(),
     })),
   },
@@ -52,38 +52,32 @@ export const AsLinks: Story = {
   args: {
     options: [
       {
-        label: "First",
+        children: (
+          <a href="#first" target="_self">
+            First
+          </a>
+        ),
         value: "first",
         selectedByDefault: true,
-        props: {
-          as: "a",
-          asProps: {
-            href: "#first",
-            target: "_self",
-          },
-        },
+        asChild: true,
       },
       {
-        label: "Second",
+        children: (
+          <a href="#second" target="_self">
+            Second
+          </a>
+        ),
         value: "second",
-        props: {
-          as: "a",
-          asProps: {
-            href: "#second",
-            target: "_self",
-          },
-        },
+        asChild: true,
       },
       {
-        label: "Third",
+        children: (
+          <a href="#third" target="_self">
+            Third
+          </a>
+        ),
         value: "third",
-        props: {
-          as: "a",
-          asProps: {
-            href: "#third",
-            target: "_self",
-          },
-        },
+        asChild: true,
       },
     ],
   },

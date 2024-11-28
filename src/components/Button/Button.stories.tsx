@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { Button, ButtonProps, InkIcon } from "../..";
+import { Button, type ButtonProps } from "./index";
 import { MatrixDecorator } from "../../decorators/MatrixDecorator";
+import { InkIcon } from "../..";
+import Avatar from "../../images/avatar.png?base64";
 
-const meta: Meta<ButtonProps<"button" | "a">> = {
+const meta: Meta<ButtonProps> = {
   title: "Components/Button",
   decorators: [
     MatrixDecorator<ButtonProps>({
@@ -61,10 +63,36 @@ export const WithMinimumWidth: Story = {
 
 export const AsLink: Story = {
   args: {
-    as: "a",
-    href: "/test",
-    target: "_blank",
-    children: "inkonchain.com",
+    asChild: true,
+    children: (
+      <a href="https://inkonchain.com" target="_blank">
+        inkonchain.com
+      </a>
+    ),
     iconRight: <InkIcon.Arrow className="ink:rotate-[225deg]" />,
+  },
+};
+
+export const WalletVariant: Story = {
+  decorators: [
+    (Story, { args }) => (
+      <div className="ink:flex ink:flex-col ink:items-center ink:justify-center ink:gap-2">
+        <Story args={{ ...args, size: "sm" }} />
+        <Story args={{ ...args, size: "md" }} />
+        <Story args={{ ...args, size: "lg" }} />
+      </div>
+    ),
+  ],
+  parameters: { disableMatrix: true },
+  args: {
+    variant: "wallet",
+    children: <div>Wallet</div>,
+    iconLeft: (
+      <img
+        src={Avatar}
+        alt="avatar"
+        className="ink:object-cover ink:w-full ink:h-full ink:rounded-full"
+      />
+    ),
   },
 };

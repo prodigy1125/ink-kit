@@ -1,50 +1,45 @@
-import React, { ElementType } from "react";
-import { PolymorphicProps } from "../../components/polymorphic";
+import React from "react";
 import { classNames } from "../../util/classes";
-
-const DEFAULT_COMPONENT_TYPE = "a" as const;
+import { Slot, Slottable } from "../../components/Slot";
 
 export interface InkLayoutLink extends React.ComponentPropsWithoutRef<"a"> {
-  label: string;
+  children: React.ReactNode;
   href: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   target?: StringWithAutocomplete<"_blank" | "_self">;
+  asChild?: boolean;
 }
 
-export type InkNavLinkProps<
-  T extends ElementType = typeof DEFAULT_COMPONENT_TYPE,
-> = PolymorphicProps<T> &
-  InkLayoutLink & {
-    className?: string;
-  };
+export interface InkNavLinkProps extends InkLayoutLink {}
 
-export const InkNavLink = <
-  T extends ElementType = typeof DEFAULT_COMPONENT_TYPE,
->({
-  as,
-  asProps,
+export const InkNavLink: React.FC<InkNavLinkProps> = ({
   href,
   icon,
-  label,
+  children,
   className = "",
+  asChild,
   ...props
-}: InkNavLinkProps<T>) => {
-  const Component = as ?? DEFAULT_COMPONENT_TYPE;
+}) => {
+  const Component = asChild ? Slot : "a";
 
   return (
     <Component
       href={href}
       className={classNames(
-        Component === DEFAULT_COMPONENT_TYPE &&
-          "ink:flex ink:items-center ink:gap-1.5 ink:px-1.5 ink:py-1.5 ink:text-inherit ink:no-underline ink:rounded-md ink:transition-colors ink:duration-200 ink:hover:bg-background-container",
+        "ink:flex ink:items-center ink:gap-1.5 ink:px-1.5 ink:py-1.5 ink:text-inherit ink:no-underline ink:rounded-md ink:transition-colors ink:duration-200 ink:hover:bg-background-container",
         className
       )}
       draggable={false}
-      {...asProps}
       {...props}
     >
-      <div className="ink:size-3">{icon}</div>
-      <div>{label}</div>
+      <Slottable child={children}>
+        {(child) => (
+          <>
+            {icon && <div className="ink:size-3">{icon}</div>}
+            {child}
+          </>
+        )}
+      </Slottable>
     </Component>
   );
 };

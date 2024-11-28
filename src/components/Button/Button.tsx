@@ -1,24 +1,21 @@
-import React, { PropsWithChildren, type ElementType } from "react";
+import React, { PropsWithChildren } from "react";
 import { classNames, variantClassNames } from "../../util/classes";
-import { PolymorphicProps } from "../polymorphic";
+import { Slot, Slottable } from "../Slot/Slot";
 
-const DEFAULT_BUTTON_TAG = "button" as const;
-
-export type ButtonProps<T extends ElementType = typeof DEFAULT_BUTTON_TAG> =
-  PolymorphicProps<T> & OwnButtonProps;
-
-export interface OwnButtonProps extends PropsWithChildren {
+export interface ButtonProps
+  extends PropsWithChildren,
+    React.ButtonHTMLAttributes<HTMLButtonElement> {
+  asChild?: boolean;
   className?: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "wallet";
   size?: "sm" | "md" | "lg";
   rounded?: "full" | "default";
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
 }
 
-export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
-  as,
-  asProps,
+export const Button: React.FC<ButtonProps> = ({
+  asChild,
   className,
   children,
   variant = "primary",
@@ -27,25 +24,36 @@ export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
   iconLeft,
   iconRight,
   ...restProps
-}: ButtonProps<T>) => {
-  const Component = as ?? DEFAULT_BUTTON_TAG;
-
+}: ButtonProps) => {
+  const Component = asChild ? Slot : "button";
+  const iconClasses = classNames(
+    "ink:size-3 ink:-my-1",
+    variant === "wallet" &&
+      classNames(
+        "*:ink:object-cover ink:*:w-full ink:*:h-full ink:*:rounded-full",
+        variantClassNames(size, {
+          sm: "ink:size-4",
+          md: "ink:size-5",
+          lg: "ink:size-6",
+        })
+      )
+  );
   return (
     <Component
       className={classNames(
-        "ink:rounded-full ink:font-default ink:transition-colors ink:hover:cursor-pointer ink:disabled:cursor-not-allowed ink:duration-100",
+        "ink:rounded-full ink:font-default ink:transition-colors ink:hover:cursor-pointer ink:disabled:cursor-not-allowed ink:duration-100 ink:box-border",
         "ink:flex ink:items-center ink:justify-center ink:gap-1 ink:select-none ink:no-underline",
         variantClassNames(size, {
-          sm: "ink:px-2 ink:py-1.5 ink:text-body-2-bold",
-          md: "ink:px-3 ink:py-2 ink:text-body-2-bold",
-          lg: "ink:px-4 ink:py-3 ink:text-h4",
+          sm: "ink:px-2 ink:py-1.5 ink:text-body-2-bold ink:h-5",
+          md: "ink:px-3 ink:py-2 ink:text-body-2-bold ink:h-6",
+          lg: "ink:px-4 ink:py-3 ink:text-h4 ink:h-8",
         }),
         variantClassNames(rounded, {
-          full: variantClassNames(size, {
-            sm: "ink:rounded-full ink:p-1",
-            md: "ink:rounded-full ink:p-1.5",
-            lg: "ink:rounded-full ink:p-2",
-          }),
+          full: `ink:rounded-full ${variantClassNames(size, {
+            sm: "ink:p-1 ink:size-5",
+            md: "ink:p-1.5 ink:size-6",
+            lg: "ink:p-2 ink:size-8",
+          })}`,
           default: "",
         }),
         variantClassNames(variant, {
@@ -53,34 +61,26 @@ export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
             "ink:bg-button-primary ink:text-text-on-primary ink:hover:bg-button-primary-hover ink:disabled:bg-button-primary-disabled ink:disabled:text-text-on-primary-disabled ink:active:bg-button-primary-pressed",
           secondary:
             "ink:bg-button-secondary ink:text-text-on-secondary ink:hover:bg-button-secondary-hover ink:disabled:bg-button-secondary-disabled ink:disabled:text-text-on-secondary-disabled ink:active:bg-button-secondary-pressed",
+          wallet: classNames(
+            "ink:bg-background-light-transparent ink:text-body-2-bold ink:text-text-default ink:hover:bg-background-light ink:disabled:bg-background-light-transparent-disabled ink:disabled:text-muted ink:active:bg-background-light",
+            "ink:border-background-container ink:border",
+            iconLeft && "ink:pl-1",
+            iconRight && "ink:pr-1"
+          ),
         }),
         className
       )}
-      {...asProps}
       {...restProps}
     >
-      {iconLeft && <div className="ink:size-3 ink:-my-1">{iconLeft}</div>}
-      {rounded === "full" ? (
-        <div
-          className={variantClassNames(size, {
-            sm: "ink:size-3",
-            md: "ink:size-3",
-            lg: "ink:size-3 ink:m-0.5",
-          })}
-        >
-          {children}
-        </div>
-      ) : (
-        <div
-          className={classNames(
-            "ink:flex ink:items-center ink:justify-center ink:gap-1.5 ink:h-2",
-            !iconLeft && !iconRight && "ink:w-full"
-          )}
-        >
-          {children}
-        </div>
-      )}
-      {iconRight && <div className="ink:size-3 ink:-my-1">{iconRight}</div>}
+      <Slottable child={children}>
+        {(child) => (
+          <>
+            {iconLeft && <div className={iconClasses}>{iconLeft}</div>}
+            {child}
+            {iconRight && <div className={iconClasses}>{iconRight}</div>}
+          </>
+        )}
+      </Slottable>
     </Component>
   );
 };

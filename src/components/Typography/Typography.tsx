@@ -1,34 +1,35 @@
 import { classNames, variantClassNames } from "../../util/classes";
-import { PropsWithChildren } from "react";
-import { PolymorphicProps } from "../polymorphic";
+import { HTMLAttributes, PropsWithChildren } from "react";
+import { Slot } from "../Slot";
 
-export type TypographyProps<T extends React.ElementType = "div"> =
-  PropsWithChildren<{
-    variant:
-      | "h1"
-      | "h2"
-      | "h3"
-      | "h4"
-      | "body-1"
-      | "body-2-regular"
-      | "body-2-bold"
-      | "body-3-regular"
-      | "body-3-bold"
-      | "caption-1-regular"
-      | "caption-1-bold"
-      | "caption-2";
-    className?: string;
-  }> &
-    PolymorphicProps<T>;
+export interface TypographyProps
+  extends PropsWithChildren,
+    HTMLAttributes<HTMLHeadingElement | HTMLDivElement> {
+  variant:
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "body-1"
+    | "body-2-regular"
+    | "body-2-bold"
+    | "body-3-regular"
+    | "body-3-bold"
+    | "caption-1-regular"
+    | "caption-1-bold"
+    | "caption-2";
+  className?: string;
+  asChild?: boolean;
+}
 
-export const Typography = <T extends React.ElementType = "div">({
+export const Typography: React.FC<TypographyProps> = ({
   variant,
-  as,
-  asProps,
   className,
   children,
-}: TypographyProps<T>) => {
-  const Component = as ?? "div";
+  asChild,
+  ...restProps
+}) => {
+  const Component = asChild ? Slot : "div";
   return (
     <Component
       className={classNames(
@@ -53,7 +54,7 @@ export const Typography = <T extends React.ElementType = "div">({
         }),
         className
       )}
-      {...asProps}
+      {...restProps}
     >
       {children}
     </Component>
