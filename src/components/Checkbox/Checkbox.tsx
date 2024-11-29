@@ -30,7 +30,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       <div className="ink:absolute ink:inset-0 ink:flex ink:items-center ink:justify-center">
         {/** See if those SVGs should be icons in our standard icon library. */}
         <svg
-          className="ink:size-1.5 ink:text-text-on-primary ink:group-data-indeterminate:opacity-0 ink:transition-opacity ink:duration-200 ink:ease-in-out opacity-0 starting:opacity-100"
+          className="ink:size-1.5 ink:text-text-on-primary ink:group-data-indeterminate:opacity-0 ink:transition-opacity ink:duration-200 ink:ease-in-out ink:opacity-0 ink:starting:opacity-100"
           width="12"
           height="12"
           viewBox="0 0 12 12"
@@ -47,7 +47,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       </div>
 
       <svg
-        className="ink:size-1.5 ink:text-text-on-primary ink:group-not-data-indeterminate:opacity-0 ink:transition-opacity ink:duration-200 ink:ease-in-out opacity-0 starting:opacity-100"
+        className="ink:size-1.5 ink:text-text-on-primary ink:group-not-data-indeterminate:opacity-0 ink:transition-opacity ink:duration-200 ink:ease-in-out ink:opacity-0 ink:starting:opacity-100"
         width="12"
         height="2"
         viewBox="0 0 12 2"

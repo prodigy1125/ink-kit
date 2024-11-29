@@ -59,7 +59,7 @@ export const SegmentedControl = <TOptionValue extends string>({
     <div className="ink:relative ink:font-default">
       {isMounted && selectedOption && (
         <div
-          className="ink:absolute ink:transition-all ink:duration-200 ink:p-0.5 ink:box-border opacity-0 starting:opacity-100"
+          className="ink:absolute ink:transition-all ink:duration-200 ink:p-0.5 ink:box-border ink:opacity-0 ink:starting:opacity-100"
           style={{
             top: 0,
             bottom: 0,
