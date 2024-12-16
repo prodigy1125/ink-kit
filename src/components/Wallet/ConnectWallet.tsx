@@ -53,9 +53,12 @@ export const ConnectWallet: React.FC<ConnectWalletProps> = ({
         >
           <PlaceholderUntilLoaded
             placeholder={
-              <div className="flex items-center justify-center">
-                Connecting...
-              </div>
+              <>
+                <div className="ink:hidden ink:sm:flex ink:items-center ink:justify-center">
+                  Connecting...
+                </div>
+                <span className="ink:inline ink:sm:hidden">···</span>
+              </>
             }
             isLoading={isLoading}
           >
