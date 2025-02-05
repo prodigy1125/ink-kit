@@ -1,0 +1,27 @@
+.tooltip-on-hover {
+  position: relative;
+}
+
+.tooltip-on-hover:before {
+  display: block;
+  content: attr(data-title);
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%) translateY(-125%);
+  background-color: var(--ink-button-primary);
+  color: var(--ink-text-on-primary);
+  padding: 4px 8px;
+  border-radius: 8px;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  width: 0;
+  left: 0;
+}
+
+.tooltip-on-hover:hover:before {
+  left: 50%;
+  transition: opacity 0.1s ease-in-out;
+  opacity: 1;
+  width: auto;
+}
