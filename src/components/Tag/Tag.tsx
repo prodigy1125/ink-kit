@@ -1,9 +1,9 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { cn } from "../../lib/utils";
+import { classNames } from "../../util/classes";
 
 const tagVariants = cva(
-  "ink:inline-flex ink:font-default ink:items-center ink:gap-1 ink:flex-shrink-0 ink:rounded-full ink:text-body-3-bold ink:font-bold ink:leading-[18px] ink:py-1.5 ink:px-1.5 ",
+  "ink:inline-flex ink:font-default ink:items-center ink:gap-1 ink:flex-shrink-0 ink:rounded-full ink:text-body-3-bold ink:font-bold ink:leading-[18px] ink:px-1.5",
   {
     variants: {
       variant: {
@@ -18,8 +18,8 @@ const tagVariants = cva(
         false: "",
       },
       hasIcon: {
-        true: "",
-        false: "",
+        true: "ink:py-1",
+        false: "ink:py-1.5",
       },
     },
     compoundVariants: [
@@ -27,10 +27,6 @@ const tagVariants = cva(
         variant: "filter",
         selected: true,
         class: "ink:bg-background-container ink:text-text-default",
-      },
-      {
-        hasIcon: true,
-        class: "ink:py-1",
       },
     ],
     defaultVariants: {
@@ -42,7 +38,7 @@ const tagVariants = cva(
 
 export interface TagProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof tagVariants> {
+    Omit<VariantProps<typeof tagVariants>, "hasIcon"> {
   icon?: React.ReactNode;
 }
 
@@ -51,7 +47,7 @@ export const Tag = React.forwardRef<HTMLDivElement, TagProps>(
     return (
       <div
         ref={ref}
-        className={cn(
+        className={classNames(
           tagVariants({ variant, selected, hasIcon: !!icon, className })
         )}
         {...props}
