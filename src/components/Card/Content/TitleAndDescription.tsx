@@ -3,7 +3,7 @@ import { classNames, variantClassNames } from "../../../util/classes";
 export interface TitleAndDescriptionProps {
   title: React.ReactNode;
   description?: React.ReactNode;
-  size?: "default" | "small";
+  size?: "default" | "small" | "cardInfo";
 }
 
 export const TitleAndDescription = ({
@@ -19,6 +19,7 @@ export const TitleAndDescription = ({
           variantClassNames(size, {
             default: "ink:text-h3",
             small: "ink:text-body-1-regular",
+            cardInfo: "ink:text-h5",
           })
         )}
       >
@@ -31,6 +32,7 @@ export const TitleAndDescription = ({
             variantClassNames(size, {
               default: "ink:text-body-1-regular",
               small: "ink:text-body-3-regular",
+              cardInfo: "ink:text-body-2-regular",
             })
           )}
         >

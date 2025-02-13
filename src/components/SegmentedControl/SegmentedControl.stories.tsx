@@ -44,10 +44,6 @@ export const VariableTabWidth: Story = {
   },
 };
 
-export const DisplayOnDarkBackground: Story = {
-  args: { displayOn: "dark" },
-};
-
 export const AsLinks: Story = {
   args: {
     options: [
@@ -85,7 +81,6 @@ export const AsLinks: Story = {
 
 export const PrimaryVariant: Story = {
   args: {
-    displayOn: "light",
     variant: "primary",
     variableTabWidth: true,
     options: [
@@ -102,10 +97,9 @@ export const PrimaryVariant: Story = {
   },
 };
 
-export const PrimaryVariantOnDark: Story = {
+export const TagVariant: Story = {
   args: {
-    displayOn: "dark",
-    variant: "primary",
+    variant: "tag",
     variableTabWidth: true,
     options: [
       {

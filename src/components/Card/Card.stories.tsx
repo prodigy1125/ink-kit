@@ -231,43 +231,35 @@ export const LargeCardInfo: Story = {
     children: (
       <>
         <TitleAndDescription title="Fun Activities Around Town" />
-        <CardContent.CardInfo>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={<InkIcon.Apps className="ink:size-3" />}
-              title="Pizza Making Class"
-              description="Learn to toss dough and create your perfect pizza with our expert chefs."
-            />
-          </Card>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={<InkIcon.Bridge className="ink:size-3" />}
-              title="Paint & Sip Night"
-              description="Enjoy wine while creating your masterpiece in this relaxing art class."
-            />
-          </Card>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={<InkIcon.Social.Telegram className="ink:size-3" />}
-              title="Live Jazz Night"
-              description="Swing by for smooth tunes and great vibes at our local jazz club."
-            />
-          </Card>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={<InkIcon.Deposit className="ink:size-3" />}
-              title="Community Garden"
-              description="Get your hands dirty and learn about urban farming with neighbors."
-            />
-          </Card>
-          <Card className="ink:lg:col-span-2" variant="secondary">
-            <CardContent.Tiny
-              icon={<InkIcon.Sun className="ink:size-3" />}
-              title="Weekend Food Festival"
-              description="Sample delicious treats from local vendors and enjoy live entertainment all weekend long."
-            />
-          </Card>
-        </CardContent.CardInfo>
+        <CardContent.CardInfos>
+          <CardContent.CardInfo
+            icon={<InkIcon.Apps className="ink:size-3" />}
+            title="Pizza Making Class"
+            description="Learn to toss dough and create your perfect pizza with our expert chefs."
+          />
+          <CardContent.CardInfo
+            icon={<InkIcon.Bridge className="ink:size-3" />}
+            title="Paint & Sip Night"
+            description="Enjoy wine while creating your masterpiece in this relaxing art class."
+          />
+          <CardContent.CardInfo
+            icon={<InkIcon.Social.Telegram className="ink:size-3" />}
+            title="Live Jazz Night"
+            description="Swing by for smooth tunes and great vibes at our local jazz club."
+          />
+          <CardContent.CardInfo
+            icon={<InkIcon.Deposit className="ink:size-3" />}
+            title="Community Garden"
+            description="Get your hands dirty and learn about urban farming with neighbors."
+          />
+
+          <CardContent.CardInfo
+            className="ink:lg:col-span-2"
+            icon={<InkIcon.Sun className="ink:size-3" />}
+            title="Weekend Food Festival"
+            description="Sample delicious treats from local vendors and enjoy live entertainment all weekend long."
+          />
+        </CardContent.CardInfos>
       </>
     ),
   },

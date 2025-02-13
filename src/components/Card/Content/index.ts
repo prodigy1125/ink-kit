@@ -1,4 +1,5 @@
 export * from "./CallToAction";
+export * from "./CardInfos";
 export * from "./CardInfo";
 export * from "./Image";
 export * from "./LargeLink";

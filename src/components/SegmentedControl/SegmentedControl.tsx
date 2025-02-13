@@ -1,19 +1,17 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { classNames, variantClassNames } from "../../util/classes";
-import { DisplayOnProps } from "../../util/theme";
 import { Slot } from "../Slot";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
-export type SegmentedControlProps<TOptionValue extends string> =
-  DisplayOnProps & {
-    options: SegmentedControlOption<TOptionValue>[];
-    onOptionChange: (
-      option: SegmentedControlOption<TOptionValue>,
-      index: number
-    ) => void;
-    variableTabWidth?: boolean;
-    variant?: "default" | "primary";
-  };
+export type SegmentedControlProps<TOptionValue extends string> = {
+  options: SegmentedControlOption<TOptionValue>[];
+  onOptionChange: (
+    option: SegmentedControlOption<TOptionValue>,
+    index: number
+  ) => void;
+  variableTabWidth?: boolean;
+  variant?: "default" | "primary" | "tag";
+};
 
 export interface SegmentedControlOption<TOptionValue extends string> {
   children: React.ReactNode;
@@ -26,7 +24,6 @@ export const SegmentedControl = <TOptionValue extends string>({
   options,
   onOptionChange,
   variableTabWidth,
-  displayOn = "light",
   variant = "default",
 }: SegmentedControlProps<TOptionValue>) => {
   const itemsRef = useRef<Array<HTMLButtonElement | null>>([]);
@@ -64,9 +61,10 @@ export const SegmentedControl = <TOptionValue extends string>({
       <div
         className={classNames(
           "ink:grid ink:h-5 ink:grid-flow-col ink:text-body-3-bold ink:rounded-md ink:p-0.5 ink:box-border ink:backdrop-blur-lg",
-          variantClassNames(displayOn, {
-            light: "ink:bg-background-container",
-            dark: "ink:bg-background-light",
+          variantClassNames(variant, {
+            default: "ink:bg-background-container",
+            primary: "ink:bg-background-container",
+            tag: "",
           }),
           variableTabWidth
             ? "ink:[grid-auto-columns:auto]"
@@ -84,9 +82,14 @@ export const SegmentedControl = <TOptionValue extends string>({
                   ? variantClassNames(variant, {
                       default: "ink:text-text-default",
                       primary: "ink:text-text-on-primary",
+                      tag: "ink:text-text-default",
                     })
                   : "ink:text-text-muted ink:hover:text-text-default",
-                variableTabWidth ? "ink:px-3" : "ink:px-4"
+                variantClassNames(variant, {
+                  default: variableTabWidth ? "ink:px-3" : "ink:px-4",
+                  primary: variableTabWidth ? "ink:px-3" : "ink:px-4",
+                  tag: "ink:px-2",
+                })
               )}
               ref={(el) => {
                 itemsRef.current[index] = el;
@@ -115,13 +118,10 @@ export const SegmentedControl = <TOptionValue extends string>({
             <div
               className={classNames(
                 "ink:w-full ink:h-full ink:rounded-sm",
-                variantClassNames(displayOn, {
-                  light: "ink:bg-background-light",
-                  dark: "ink:bg-background-dark",
-                }),
                 variantClassNames(variant, {
-                  default: "",
+                  default: "ink:bg-background-light",
                   primary: "ink:bg-button-primary",
+                  tag: "ink:bg-button-secondary",
                 })
               )}
             />

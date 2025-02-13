@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "../../util/classes";
+import { classNames, variantClassNames } from "../../util/classes";
 import { Slot, Slottable } from "../Slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -13,7 +13,6 @@ export interface CardProps extends VariantProps<typeof cardVariants> {
 
 const cardVariants = cva(
   `
-ink:rounded-xl
 ink:grid ink:grid-cols-1
 ink:p-2 ink:pb-3 ink:sm:p-3 ink:gap-3
 ink:relative 
@@ -37,6 +36,11 @@ ink:box-border
         true: "ink:cursor-pointer",
         false: "",
       },
+      rounded: {
+        lg: "ink:rounded-lg",
+        xl: "ink:rounded-xl",
+        xxl: "ink:rounded-xxl",
+      },
     },
     compoundVariants: [
       {
@@ -45,6 +49,9 @@ ink:box-border
         className: "ink:hover:bg-button-secondary-hover",
       },
     ],
+    defaultVariants: {
+      rounded: "xl",
+    },
   }
 );
 
@@ -56,8 +63,10 @@ export const Card: React.FC<CardProps> = ({
   asChild,
   variant,
   clickable,
+  rounded,
 }) => {
   const Component = asChild ? Slot : "div";
+  const roundedValue = rounded || (image ? "xxl" : "lg");
   return (
     <Component
       className={classNames(
@@ -65,6 +74,7 @@ export const Card: React.FC<CardProps> = ({
           variant,
           imageLocation: image ? imageLocation : undefined,
           clickable,
+          rounded: roundedValue,
           className,
         }),
         className
@@ -79,6 +89,11 @@ export const Card: React.FC<CardProps> = ({
             variant === "light-purple"
               ? "var(--ink-background-light)"
               : "var(--ink-text-muted)",
+          "--ink-card-rounded": variantClassNames(roundedValue, {
+            lg: "var(--ink-base-radius-sm)",
+            xl: "var(--ink-base-radius-lg)",
+            xxl: "var(--ink-base-radius-xl)",
+          }),
         } as React.CSSProperties
       }
     >
