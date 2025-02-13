@@ -1,20 +1,37 @@
 import { PropsWithChildren } from "react";
 import { classNames } from "../../../util/classes";
+import { TitleAndDescription } from "./TitleAndDescription";
+import { Card } from "../Card";
 
 export interface CardInfoProps extends PropsWithChildren {
   className?: string;
-  children: React.ReactNode;
+  icon?: React.ReactNode;
+  title: string;
+  description: string;
 }
-
-export const CardInfo = ({ children, className }: CardInfoProps) => {
+export const CardInfo = ({
+  className,
+  icon,
+  title,
+  description,
+  children,
+}: CardInfoProps) => {
   return (
-    <div
-      className={classNames(
-        "ink:grid ink:grid-cols-[repeat(auto-fit,minmax(max(200px,calc(100%/3)),1fr))] ink:xl:grid-cols-2 ink:gap-1 ink:box-border",
-        className
-      )}
-    >
-      {children}
-    </div>
+    <Card variant="secondary" className={className}>
+      <div
+        className={classNames(
+          "ink:flex ink:flex-col ink:justify-start ink:gap-3 ink:box-border",
+          className
+        )}
+      >
+        {icon}
+        <TitleAndDescription
+          title={title}
+          description={description}
+          size="cardInfo"
+        />
+        {children}
+      </div>
+    </Card>
   );
 };
