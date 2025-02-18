@@ -1,11 +1,12 @@
 import { classNames } from "../util/classes";
 import * as Icons from "./index";
 import "./AllIcons.css";
-
-type IconType = (typeof Icons)[keyof typeof Icons];
+import React from "react";
 
 interface IconsOrFolder {
-  [key: string]: IconType | IconsOrFolder;
+  [key: string]:
+    | React.ComponentType<React.SVGProps<SVGSVGElement>>
+    | IconsOrFolder;
 }
 
 export const AllIcons: React.FC<{
@@ -47,6 +48,7 @@ function IconsOrFolder({
           if (!isIconFolder(IconOrFolder)) {
             return (
               <div
+                key={name}
                 className="tooltip-on-hover ink:cursor-pointer ink:whitespace-nowrap"
                 data-title={`<${title}.${name} />`}
                 onClick={() =>
@@ -55,8 +57,6 @@ function IconsOrFolder({
               >
                 <IconOrFolder
                   className={classNames("ink:size-4", iconClassName)}
-                  title={`${title}.${name}`}
-                  key={name}
                 />
               </div>
             );
@@ -80,6 +80,6 @@ function IconsOrFolder({
   );
 }
 
-function isIconFolder(icon: IconType | IconsOrFolder): icon is IconsOrFolder {
+function isIconFolder(icon: IconsOrFolder[string]): icon is IconsOrFolder {
   return typeof icon === "object";
 }

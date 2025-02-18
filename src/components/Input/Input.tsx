@@ -17,7 +17,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         className={classNames(
           "ink:w-full ink:flex ink:items-center ink:justify-center ink:gap-1 ink:box-border ink:group",
           "ink:p-2 ink:h-5",
-          "ink:font-default ink:rounded-xs ink:bg-background-container ink:text-body-3-regular ink:text-text-default",
+          "ink:font-default ink:rounded-xs ink:bg-button-secondary ink:text-body-3-regular ink:text-text-default",
           "ink:border-1 ink:border-transparent ink:focus-within:border-text-on-secondary ink:transition-colors ink:transition-default-animation",
           className
         )}

@@ -27,7 +27,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       className={classNames(
         "ink:group ink:relative ink:flex ink:items-center ink:justify-center ink:size-3 ink:shrink-0 ink:rounded-xs ink:box-border",
         "ink:transition-colors ink:transition-default-animation",
-        "ink:bg-background-container ink:shadow-xs",
+        "ink:bg-button-secondary ink:shadow-xs",
         "ink:ring-text-on-secondary ink:focus-visible:outline-none ink:focus-visible:text-on-primary ink:focus-visible:ring-2 ink:focus-visible:ring-offset-2",
         "ink:data-checked:bg-button-primary ink:group-data-checked:bg-button-primary",
         "ink:data-indeterminate:bg-button-primary ink:group-data-indeterminate:bg-button-primary",

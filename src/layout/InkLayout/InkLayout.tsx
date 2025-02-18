@@ -1,6 +1,7 @@
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren } from "react";
 import { classNames } from "../../util/classes";
 import { Button, InkIcon } from "../..";
+import { useInkLayoutContext, InkLayoutProvider } from "./InkLayoutContext";
 
 export interface InkLayoutProps extends PropsWithChildren {
   className?: string;
@@ -8,16 +9,20 @@ export interface InkLayoutProps extends PropsWithChildren {
   headerContent?: React.ReactNode;
   sideNavigation?: React.ReactNode;
   topNavigation?: React.ReactNode;
-  mobileNavigation?: ({
-    closeMobileNavigation,
-  }: {
-    closeMobileNavigation: () => void;
-  }) => React.ReactNode;
+  mobileNavigation?: React.ReactNode;
   /** Makes the layout really close to the edges of the screen, meaning you will have to handle the padding yourself. */
   snug?: boolean;
 }
 
-export const InkLayout: React.FC<InkLayoutProps> = ({
+export const InkLayout: React.FC<InkLayoutProps> = (props) => {
+  return (
+    <InkLayoutProvider>
+      <InkLayoutContent {...props} />
+    </InkLayoutProvider>
+  );
+};
+
+const InkLayoutContent = ({
   className,
   mainIcon = <InkIcon.Logo.Placeholder className="ink:size-5" />,
   headerContent,
@@ -26,9 +31,8 @@ export const InkLayout: React.FC<InkLayoutProps> = ({
   mobileNavigation,
   snug = false,
   children,
-}) => {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const hasSomethingInHeader = !!headerContent || !!mobileNavigation;
+}: InkLayoutProps) => {
+  const { isMobileNavOpen, setIsMobileNavOpen } = useInkLayoutContext();
   return (
     <>
       <div
@@ -38,37 +42,30 @@ export const InkLayout: React.FC<InkLayoutProps> = ({
         )}
       >
         <div className="ink:w-full ink:grid ink:grid-cols-[1fr_auto_1fr] ink:justify-between ink:items-center ink:gap-3 ink:px-3 ink:sm:px-5 ink:pt-4 ink:box-border ink:sticky ink:top-0 ink:z-10">
-          <div className="ink:flex ink:items-center ink:justify-start ink:size-5 ink:gap-2">
-            {mainIcon}
-          </div>
-          <div className="ink:flex ink:flex-1 ink:justify-center ink:items-center">
-            {isMobileNavOpen && (
-              <div className="ink:text-h3 ink:transition-default-animation ink:opacity-100 ink:starting:opacity-0">
-                Menu
-              </div>
+          <div className="ink:flex ink:gap-1 ink:justify-start ink:items-center">
+            <div className="ink:hidden ink:lg:block ink:size-5">{mainIcon}</div>
+            {mobileNavigation && (
+              <Button
+                variant="wallet"
+                size="md"
+                rounded="full"
+                className="ink:lg:hidden"
+                onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+              >
+                {isMobileNavOpen ? <InkIcon.Close /> : <InkIcon.Menu />}
+              </Button>
             )}
+          </div>
+
+          <div className="ink:flex ink:items-center ink:justify-center ink:gap-2">
+            <div className="ink:block ink:lg:hidden ink:size-5">{mainIcon}</div>
             {topNavigation && (
               <div className="ink:hidden ink:lg:block">{topNavigation}</div>
             )}
           </div>
-          {hasSomethingInHeader && (
-            <div className="ink:flex ink:gap-1 ink:justify-end ink:items-center">
-              {!isMobileNavOpen && headerContent && (
-                <div className="ink:flex ink:items-center">{headerContent}</div>
-              )}
-              {mobileNavigation && (
-                <Button
-                  variant="wallet"
-                  size="md"
-                  rounded="full"
-                  className="ink:lg:hidden"
-                  onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-                >
-                  {isMobileNavOpen ? <InkIcon.Close /> : <InkIcon.Menu />}
-                </Button>
-              )}
-            </div>
-          )}
+          <div className="ink:flex ink:gap-1 ink:justify-end ink:items-center">
+            {headerContent}
+          </div>
         </div>
         <div
           className={classNames(
@@ -93,7 +90,12 @@ export const InkLayout: React.FC<InkLayoutProps> = ({
               {sideNavigation}
             </div>
           )}
-          <div className="ink:flex-grow ink:flex ink:box-border ink:pb-5 ink:overflow-hidden">
+          <div
+            className={classNames(
+              "ink:flex-grow ink:flex ink:box-border ink:pb-5 ink:overflow-hidden ink:transition-[filter]",
+              isMobileNavOpen && "ink:blur-[5px] ink:lg:blur-none"
+            )}
+          >
             {children}
           </div>
         </div>
@@ -113,10 +115,7 @@ export const InkLayout: React.FC<InkLayoutProps> = ({
             "ink:transition-default-animation ink:opacity-100 ink:starting:opacity-0"
           )}
         >
-          {mobileNavigation &&
-            mobileNavigation({
-              closeMobileNavigation: () => setIsMobileNavOpen(false),
-            })}
+          {mobileNavigation}
         </div>
       )}
     </>

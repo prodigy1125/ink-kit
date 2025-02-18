@@ -15,7 +15,7 @@ export const Radio: React.FC<RadioProps> = ({ value, asChild }) => {
       className={classNames(
         "ink:group ink:relative ink:flex ink:items-center ink:justify-center ink:size-3 ink:shrink-0 ink:cursor-pointer ink:rounded-full ink:box-border",
         "ink:transition-colors ink:transition-default-animation",
-        "ink:border-2 ink:border-transparent ink:bg-background-container ink:shadow-xs",
+        "ink:border-2 ink:border-transparent ink:bg-button-secondary ink:shadow-xs",
         "ink:ring-text-on-secondary ink:focus-visible:outline-none ink:focus-visible:text-on-primary ink:focus-visible:ring-2 ink:focus-visible:ring-offset-2",
         "ink:data-checked:bg-button-primary ink:data-checked:hover:bg-button-primary-hover"
       )}
