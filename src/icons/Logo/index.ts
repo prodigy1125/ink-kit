@@ -3,4 +3,4 @@
  */
 
 export { default as Ink } from "./Ink.svg?react";
-export { default as Placeholder } from "./Placeholder.svg?react";
+export * from "./Placeholder.tsx";

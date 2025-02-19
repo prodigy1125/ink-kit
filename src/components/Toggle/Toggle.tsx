@@ -14,7 +14,7 @@ export const Toggle: React.FC<ToggleProps> = ({ checked, onChange }) => {
       className={classNames(
         "ink:group ink:relative ink:inline-flex ink:h-4 ink:w-6 ink:shrink-0 ink:cursor-pointer ink:rounded-full ink:box-border",
         "ink:transition-colors ink:transition-default-animation",
-        "ink:bg-background-container",
+        "ink:bg-button-secondary",
         "ink:ring-text-on-secondary ink:focus-visible:outline-none ink:focus-visible:text-on-primary ink:focus-visible:ring-2 ink:focus-visible:ring-offset-2",
         "ink:data-checked:bg-status-success",
         "ink:flex ink:items-center ink:p-0.5"

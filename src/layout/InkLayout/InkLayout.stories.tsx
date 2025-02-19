@@ -30,9 +30,7 @@ const meta: Meta<InkLayoutProps> = {
     headerContent: <div>Header content</div>,
     topNavigation: <ExampleTopNav />,
     sideNavigation: <ExampleSideNav />,
-    mobileNavigation: (props) => (
-      <ExampleMobileNav onLinkClick={props.closeMobileNavigation} />
-    ),
+    mobileNavigation: <ExampleMobileNav />,
   },
 };
 
