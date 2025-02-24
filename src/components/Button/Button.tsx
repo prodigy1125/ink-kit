@@ -7,7 +7,7 @@ export interface ButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
   className?: string;
-  variant?: "primary" | "secondary" | "wallet";
+  variant?: "primary" | "secondary" | "wallet" | "transparent";
   size?: "md" | "lg";
   rounded?: "full" | "default";
   iconLeft?: React.ReactNode;
@@ -72,6 +72,8 @@ export const Button: React.FC<ButtonProps> = ({
                 lg: "ink:pr-1",
               })
           ),
+          transparent:
+            "ink:bg-transparent ink:text-text-default ink:hover:bg-background-light-transparent ink:disabled:bg-transparent ink:disabled:text-muted",
         }),
         className
       )}

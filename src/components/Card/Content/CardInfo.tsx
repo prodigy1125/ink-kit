@@ -20,7 +20,7 @@ export const CardInfo = ({
     <Card variant="secondary" className={className}>
       <div
         className={classNames(
-          "ink:flex ink:flex-col ink:justify-start ink:gap-3 ink:box-border",
+          "ink:flex ink:flex-col ink:justify-start ink:gap-3 ink:box-border ink:flex-1",
           className
         )}
       >
