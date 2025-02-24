@@ -3,7 +3,7 @@ import * as React from "react";
 import { classNames } from "../../util/classes";
 
 const tagVariants = cva(
-  "ink:inline-flex ink:font-default ink:items-center ink:gap-1 ink:flex-shrink-0 ink:rounded-full ink:text-body-3-bold ink:font-bold ink:leading-[18px]",
+  "ink:inline-flex ink:font-default ink:items-center ink:gap-1 ink:flex-shrink-0 ink:rounded-full ink:text-body-3-bold ink:font-bold ink:box-border",
   {
     variants: {
       variant: {
@@ -13,7 +13,7 @@ const tagVariants = cva(
         filter:
           "ink:text-text-muted ink:hover:text-text-default ink:duration-200 ink:cursor-pointer ink:h-5 ink:px-1.5",
         featured:
-          "ink:bg-background-container ink:text-text-on-secondary ink:text-caption-2-bold ink:h-2 ink:px-1",
+          "ink:bg-background-container ink:text-text-on-secondary ink:text-caption-2-bold ink:h-3 ink:px-1 ink:rounded-xs",
         event:
           "ink:bg-button-secondary ink:backdrop-blur-lg ink:text-text-on-primary ink:text-caption-3-bold ink:h-5 ink:px-2",
       },

@@ -41,12 +41,12 @@ const InkLayoutContent = ({
           className
         )}
       >
-        <div className="ink:w-full ink:grid ink:grid-cols-[1fr_auto_1fr] ink:justify-between ink:items-center ink:gap-3 ink:px-3 ink:sm:px-5 ink:pt-4 ink:box-border ink:sticky ink:top-0 ink:z-10">
+        <div className="ink:w-full ink:grid ink:grid-cols-[1fr_auto_1fr] ink:justify-between ink:items-center ink:gap-3 ink:px-3 ink:sm:px-5 ink:py-2 ink:box-border ink:sticky ink:top-0 ink:z-20 ink:backdrop-blur-lg ink:lg:backdrop-blur-none">
           <div className="ink:flex ink:gap-1 ink:justify-start ink:items-center">
             <div className="ink:hidden ink:lg:block ink:size-5">{mainIcon}</div>
             {mobileNavigation && (
               <Button
-                variant="wallet"
+                variant="transparent"
                 size="md"
                 rounded="full"
                 className="ink:lg:hidden"
@@ -104,9 +104,9 @@ const InkLayoutContent = ({
         <div
           style={
             {
-              /** 40px components height + 32px top spacing + 32px spacing between header and content */
+              /** 40px components height + 16px top spacing + 16px spacing between header and content */
               "--ink-mobile-nav-height":
-                "calc(var(--ink-spacing-5) + var(--ink-spacing-4) + var(--ink-spacing-4))",
+                "calc(var(--ink-spacing-5) + var(--ink-spacing-2) + var(--ink-spacing-2))",
             } as React.CSSProperties
           }
           className={classNames(

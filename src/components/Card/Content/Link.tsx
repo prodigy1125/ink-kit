@@ -30,7 +30,7 @@ export const Link = ({
       description={description}
     >
       {linkIcon && (
-        <div className="ink:absolute ink:top-3 ink:right-3 ink:text-(--ink-card-default-color)">
+        <div className="ink:absolute ink:top-3 ink:right-3 ink:text-(--ink-card-muted-color)">
           {linkIcon}
         </div>
       )}
