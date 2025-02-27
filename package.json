@@ -1,6 +1,6 @@
 {
   "name": "@inkonchain/ink-kit",
-  "version": "0.9.1-beta.5",
+  "version": "0.9.1-beta.9",
   "description": "",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -19,7 +19,8 @@
       "import": "./dist/providers.es.js",
       "require": "./dist/providers.cjs.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./tailwind.css": "./dist/tailwind.css"
   },
   "scripts": {
     "build": "tsc && vite build --mode production",

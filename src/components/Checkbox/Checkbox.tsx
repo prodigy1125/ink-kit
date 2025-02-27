@@ -2,7 +2,8 @@ import { Checkbox as HeadlessCheckbox } from "@headlessui/react";
 import { classNames } from "../../util/classes";
 import { InkIcon } from "../..";
 
-export interface CheckboxProps {
+export interface CheckboxProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   checked?: boolean;
   indeterminate?: boolean;
   onChange?: (enabled: boolean) => void;
@@ -12,6 +13,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   indeterminate,
   onChange,
+  className,
+  ...props
 }) => {
   const Component = onChange ? HeadlessCheckbox : "span";
   return (
@@ -36,10 +39,12 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         "ink:text-button-primary ink:data-checked:text-text-on-primary ink:data-indeterminate:text-text-on-primary",
         "ink:group-data-checked:text-text-on-primary ink:group-data-indeterminate:text-text-on-primary",
         "ink:group-data-selected:text-text-on-primary",
-        "ink:cursor-pointer"
+        "ink:cursor-pointer",
+        className
       )}
       data-checked={checked ? "true" : undefined}
       data-indeterminate={indeterminate ? "true" : undefined}
+      {...props}
     >
       <div className="ink:absolute ink:inset-0 ink:flex ink:items-center ink:justify-center ink:box-border">
         <InkIcon.Check

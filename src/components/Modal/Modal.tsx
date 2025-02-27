@@ -57,7 +57,7 @@ export const Modal = <TOnCloseProps,>({
         onClose={() => handleClose()}
         transition
         className="ink:relative ink:font-default ink:text-text-default"
-        style={{ zIndex: 5 + modalIndex }}
+        style={{ zIndex: 15 + modalIndex }}
       >
         {hasBackdrop && (
           <DialogBackdrop
