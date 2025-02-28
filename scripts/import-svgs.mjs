@@ -22,11 +22,14 @@ async function processSvgsInFolder(folder) {
     (await fs.readdir(folder, { recursive: true })).map(async (name) => {
       if (name.includes("=")) {
         const currentPath = name.split("/").slice(0, -1).join("/");
-        const newName = currentPath + "/" + name.split("=")[1];
-        if (await fs.access(path.join(folder, newName)).catch(() => false)) {
-          await fs.unlink(path.join(folder, newName));
+        const newName = path.join(
+          folder,
+          currentPath + "/" + name.split("=")[1]
+        );
+        if (await fs.access(newName).catch(() => false)) {
+          await fs.unlink(newName);
         }
-        await fs.rename(path.join(folder, name), path.join(folder, newName));
+        await fs.rename(path.join(folder, name), newName);
       }
     })
   );
