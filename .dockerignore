@@ -1,0 +1,8 @@
+node_modules
+.github
+dist
+src
+.env*
+*.log 
+.git
+.gitignore
