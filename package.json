@@ -1,7 +1,7 @@
 {
   "name": "@inkonchain/ink-kit",
   "version": "0.9.1-beta.19",
-  "description": "",
+  "description": "React component library for onchain applications - See README for modern alternatives",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",

@@ -1,15 +1,23 @@
 <img src="../src/images/banner.webp" alt="Ink Kit Banner" style="width: 100%; border-radius: 8px; margin-bottom: 2rem;" />
 
-# Welcome to Ink Kit
+# Ink Kit
 
-Ink Kit is an onchain-focused SDK that delivers a delightful developer experience with ready-to-use app layout templates, themes, and magical animated components.
+> **Looking for React UI components?** The ecosystem has matured significantly with excellent options like [shadcn/ui](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/), [Chakra UI](https://chakra-ui.com/), and [Mantine](https://mantine.dev/). For wallet connectivity specifically, check out [RainbowKit](https://www.rainbowkit.com/) or [ConnectKit](https://docs.family.co/connectkit).
 
-## Install
+---
+
+## About This Project
+
+Ink Kit is a React component library that provided UI components, app layouts, and themes, plus a wallet connection component built on wagmi. Modern alternatives now offer better maintained solutions for both general UI and web3-specific needs.
+
+## Installation
+
+If you're maintaining an existing project using Ink Kit:
 
 ```bash
-npm install @inkonchain/ink-kit
+npm install @inkonchain/ink-kit@0.9.1-beta.19
 # or
-pnpm install @inkonchain/ink-kit
+pnpm install @inkonchain/ink-kit@0.9.1-beta.19
 ```
 
 ## Usage
@@ -84,9 +92,9 @@ To see examples on specific colors that you can override, check the following [t
 
 ## Resources
 
-- **Documentation**: Visit our [Storybook](https://ink-kit.inkonchain.com/)
-- **Contributing**: Visit our [GitHub repository](https://github.com/inkonchain/ink-kit)
+- **Storybook Documentation**: [ink-kit.inkonchain.com](https://ink-kit.inkonchain.com/)
+- **NPM Package**: [@inkonchain/ink-kit](https://www.npmjs.com/package/@inkonchain/ink-kit)
 
-## WIP Notice
+---
 
-This is a work in progress: we are constantly adding new components, improving the developer experience, and fixing bugs.
+This repository was archived in October 2025. The code remains available under the MIT license for anyone who wishes to reference or fork it.
