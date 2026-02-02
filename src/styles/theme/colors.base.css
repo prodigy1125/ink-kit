@@ -1,0 +1,125 @@
+/*
+  Colors in this file are automatically computed using the other variables.
+  You can override them in a theme if you need specific colors, but these should look good without it.
+*/
+
+:root {
+  --ink-base-font-default: "Plus Jakarta Sans";
+
+  /* Background */
+  --ink-background-dark-transparent: color-mix(
+    in srgb,
+    var(--ink-background-dark) 20%,
+    transparent
+  );
+  --ink-background-light-transparent: color-mix(
+    in srgb,
+    var(--ink-background-light) 50%,
+    transparent
+  );
+  --ink-background-light-invisible: color-mix(
+    in srgb,
+    var(--ink-background-light) 0%,
+    transparent
+  );
+  --ink-background-container: color-mix(
+    in srgb,
+    var(--ink-button-primary) 6%,
+    transparent
+  );
+
+  /* Button */
+  --ink-button-primary-hover: color-mix(
+    in srgb,
+    var(--ink-button-primary) 90%,
+    transparent
+  );
+  --ink-button-primary-pressed: color-mix(
+    in srgb,
+    var(--ink-button-primary) 80%,
+    transparent
+  );
+  --ink-button-secondary: color-mix(
+    in srgb,
+    var(--ink-button-primary) 6%,
+    transparent
+  );
+  --ink-button-secondary-hover: color-mix(
+    in srgb,
+    var(--ink-button-secondary) 50%,
+    transparent
+  );
+  --ink-button-secondary-pressed: color-mix(
+    in srgb,
+    var(--ink-button-secondary-hover) 50%,
+    transparent
+  );
+
+  /* Text */
+  --ink-text-muted: color-mix(
+    in srgb,
+    var(--ink-text-default) 50%,
+    transparent
+  );
+  --ink-text-on-primary-disabled: color-mix(
+    in srgb,
+    var(--ink-text-on-primary) 40%,
+    transparent
+  );
+  --ink-text-on-secondary-disabled: color-mix(
+    in srgb,
+    var(--ink-text-on-secondary) 50%,
+    transparent
+  );
+
+  /* Status */
+  --ink-status-success-bg: color-mix(
+    in srgb,
+    var(--ink-status-success) 8%,
+    transparent
+  );
+  --ink-status-alert-bg: color-mix(
+    in srgb,
+    var(--ink-status-alert) 8%,
+    transparent
+  );
+  --ink-status-error-bg: color-mix(
+    in srgb,
+    var(--ink-status-error) 8%,
+    transparent
+  );
+
+  /* Radius */
+  --ink-base-radius-full: 9999px;
+  --ink-base-radius-xxl: 64px;
+  --ink-base-radius-xl: 48px;
+  --ink-base-radius-lg: 24px;
+  --ink-base-radius-md: 16px;
+  --ink-base-radius-sm: 12px;
+  --ink-base-radius-xs: 8px;
+
+  /* Shadows */
+  --ink-base-shadow-xs-color: color-mix(
+    in srgb,
+    var(--ink-background-shadow) 6%,
+    transparent
+  );
+  --ink-base-shadow-md-color: color-mix(
+    in srgb,
+    var(--ink-background-shadow) 8%,
+    transparent
+  );
+  --ink-base-shadow-lg-color: color-mix(
+    in srgb,
+    var(--ink-background-shadow) 10%,
+    transparent
+  );
+
+  /* Blur */
+  --ink-base-blur-sm: 48px;
+  --ink-base-blur-lg: 128px;
+
+  /* Independent Colors */
+  --ink-color-light-purple: #b9aaef;
+  --ink-color-dark-purple: #5c479d;
+}

@@ -6,8 +6,19 @@ import "./theme.css";
 
 const preview: Preview = {
   parameters: {
+    layout: "centered",
     backgrounds: {
-      disable: true,
+      default: "dark-background",
+      values: [
+        {
+          name: "dark-background",
+          value: "var(--ink-background-dark)",
+        },
+        {
+          name: "light-background",
+          value: "var(--ink-background-light)",
+        },
+      ],
     },
     controls: {
       matchers: {
@@ -15,12 +26,20 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        order: ["Welcome", "*"],
+      },
+    },
   },
   decorators: [
     withThemeByClassName<ReactRenderer>({
       themes: {
-        light: "",
-        dark: "ink-dark",
+        light: "ink:light-theme",
+        dark: "ink:dark-theme",
+        contrast: "ink:contrast-theme",
+        neo: "ink:neo-theme",
+        morpheus: "ink:morpheus-theme",
       },
       defaultTheme: "light",
     }),

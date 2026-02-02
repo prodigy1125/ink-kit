@@ -1,108 +1,101 @@
-import React, { type ElementType } from "react";
-import {
-  classNames,
-  resetClasses,
-  variantClassNames,
-} from "../../util/classes";
-import { PolymorphicProps } from "../polymorphic";
+import React, { PropsWithChildren, forwardRef } from "react";
+import { classNames, variantClassNames } from "../../util/classes";
+import { Slot, Slottable } from "../Slot/Slot";
 
-const DEFAULT_BUTTON_TAG = "button" as const;
+export interface ButtonProps
+  extends PropsWithChildren,
+    React.ButtonHTMLAttributes<HTMLButtonElement> {
+  asChild?: boolean;
+  className?: string;
+  variant?: "primary" | "secondary" | "wallet" | "transparent";
+  size?: "md" | "lg";
+  rounded?: "full" | "default";
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
+}
 
-//test
-export type ButtonProps<T extends ElementType = typeof DEFAULT_BUTTON_TAG> =
-  PolymorphicProps<T> & {
-    variant?: "primary" | "secondary";
-    size?: "sm" | "md";
-    rounded?: "full" | "default";
-    iconLeft?: React.ReactNode;
-    iconRight?: React.ReactNode;
-  };
-
-export const Button = <T extends ElementType = typeof DEFAULT_BUTTON_TAG>({
-  as,
-  className,
-  children,
-  variant = "primary",
-  size = "sm",
-  rounded = "default",
-  iconLeft,
-  iconRight,
-  ...restProps
-}: ButtonProps<T>) => {
-  const Component = as ?? DEFAULT_BUTTON_TAG;
-
-  return (
-    <Component
-      className={classNames(
-        resetClasses,
-        "ink-rounded-full ink-font-bold ink-transition-colors disabled:ink-cursor-not-allowed ink-duration-100",
-        "ink-flex ink-items-center ink-justify-center ink-gap-1 ink-select-none",
-        variantClassNames(variant, {
-          primary:
-            "ink-bg-primary ink-text-text-on-primary hover:ink-bg-primary-hover disabled:ink-bg-primary-disabled disabled:ink-text-text-on-primary-disabled active:ink-bg-primary-pressed",
-          secondary:
-            "ink-bg-secondary ink-text-text-on-secondary hover:ink-bg-secondary-hover disabled:ink-bg-secondary-disabled disabled:ink-text-text-on-secondary-disabled active:ink-bg-secondary-pressed",
-        }),
-        variantClassNames(size, {
-          sm: "ink-px-3 ink-py-2 ink-text-body-2",
-          md: "ink-px-4 ink-py-2.5 ink-text-h4",
-        }),
-        variantClassNames(rounded, {
-          full: variantClassNames(size, {
-            sm: "ink-rounded-full ink-px-1.5 ink-py-1.5",
-            md: "ink-rounded-full ink-px-2.5 ink-py-2.5",
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
+    {
+      asChild,
+      className,
+      children,
+      variant = "primary",
+      size = "md",
+      rounded = "default",
+      iconLeft,
+      iconRight,
+      ...restProps
+    },
+    ref
+  ) {
+    const Component = asChild ? Slot : "button";
+    const iconClasses = classNames(
+      "ink:size-3 ink:-my-1",
+      variant === "wallet" &&
+        classNames(
+          "ink:*:object-cover ink:*:w-full ink:*:h-full ink:*:rounded-full",
+          variantClassNames(size, {
+            md: "ink:size-4",
+            lg: "ink:size-6",
+          })
+        )
+    );
+    return (
+      <Component
+        className={classNames(
+          "ink:rounded-full ink:font-default ink:transition-colors ink:hover:cursor-pointer ink:disabled:cursor-not-allowed ink:transition-default-animation ink:box-border ink:backdrop-blur-lg",
+          "ink:flex ink:items-center ink:justify-center ink:gap-1 ink:shrink-0 ink:select-none ink:no-underline",
+          variantClassNames(size, {
+            md: "ink:px-2 ink:py-1.5 ink:text-body-3-bold ink:h-5",
+            lg: "ink:px-4 ink:py-3 ink:text-h5 ink:h-8",
           }),
-          default: "",
-        }),
-        className
-      )}
-      {...restProps}
-    >
-      {iconLeft && (
-        <div
-          className={variantClassNames(size, {
-            sm: "ink-size-3 -ink-my-1",
-            md: "ink-size-3",
-          })}
-        >
-          {iconLeft}
-        </div>
-      )}
-      {rounded === "full" ? (
-        <div
-          className={classNames(
-            variantClassNames(size, {
-              /** This here is a small exception to our spacing design so that the icon is 24px, but also matches the height of the small button */
-              sm: "ink-size-3 -ink-m-[2px]",
-              md: "ink-size-3",
-            })
+          variantClassNames(rounded, {
+            full: `ink:rounded-full ${variantClassNames(size, {
+              md: "ink:p-1 ink:size-5",
+              lg: "ink:p-2 ink:size-8",
+            })}`,
+            default: "",
+          }),
+          variantClassNames(variant, {
+            primary:
+              "ink:bg-button-primary ink:text-text-on-primary ink:hover:bg-button-primary-hover ink:disabled:bg-button-primary-disabled ink:disabled:text-text-on-primary-disabled ink:active:bg-button-primary-pressed",
+            secondary:
+              "ink:bg-button-secondary ink:text-text-on-secondary ink:hover:bg-button-secondary-hover ink:disabled:bg-button-secondary-disabled ink:disabled:text-text-on-secondary-disabled ink:active:bg-button-secondary-pressed",
+            wallet: classNames(
+              "ink:bg-background-light-transparent ink:text-body-2-bold ink:text-text-default ink:hover:bg-background-light ink:disabled:bg-background-light-transparent-disabled ink:disabled:text-muted ink:active:bg-background-light",
+              "ink:border-background-container ink:border",
+              iconLeft &&
+                variantClassNames(size, {
+                  md: "ink:pl-0.5",
+                  lg: "ink:pl-1",
+                }),
+              iconRight &&
+                variantClassNames(size, {
+                  md: "ink:pr-0.5",
+                  lg: "ink:pr-1",
+                })
+            ),
+            transparent:
+              "ink:bg-transparent ink:text-text-default ink:hover:bg-background-light-transparent ink:disabled:bg-transparent ink:disabled:text-muted",
+          }),
+          className
+        )}
+        {...restProps}
+        ref={ref}
+      >
+        <Slottable child={children}>
+          {(child) => (
+            <>
+              {iconLeft && <div className={iconClasses}>{iconLeft}</div>}
+              {child}
+              {iconRight && <div className={iconClasses}>{iconRight}</div>}
+            </>
           )}
-        >
-          {children}
-        </div>
-      ) : (
-        <div
-          className={classNames(
-            variantClassNames(size, {
-              /** This here accomplishes the "snug" spacing, which makes the box height as tight as possible */
-              sm: "-ink-my-0.5",
-              md: "",
-            })
-          )}
-        >
-          {children}
-        </div>
-      )}
-      {iconRight && (
-        <div
-          className={variantClassNames(size, {
-            sm: "ink-size-3 -ink-m-[2px]",
-            md: "ink-size-3",
-          })}
-        >
-          {iconRight}
-        </div>
-      )}
-    </Component>
-  );
-};
+        </Slottable>
+      </Component>
+    );
+  }
+);
+
+Button.displayName = "Button";

@@ -1,10 +1,247 @@
-@import url("./styles/colors.css") layer(ink-kit);
-@import url("./styles/borders.css") layer(ink-kit);
-@import url("./styles/typography.css") layer(ink-kit);
-@import url("./styles/resets.css") layer(ink-preflight);
-@import url("./styles/spacing.css") layer(ink-kit);
-@import url("./styles/font.css") layer(ink-kit);
+@import url("./styles/theme/colors.dark.css") layer(ink-theme);
+@import url("./styles/theme/colors.neo.css") layer(ink-theme);
+@import url("./styles/theme/colors.morpheus.css") layer(ink-theme);
+@import url("./styles/theme/colors.contrast.css") layer(ink-theme);
+@import url("./styles/theme/colors.light.css") layer(ink-theme);
+@import url("./styles/theme/colors.base.css") layer(ink-theme);
 
+/* We still need those directive to import the CSS in a Tailwind V3 package */
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+
+@import "tailwindcss/theme" prefix(ink);
+@import "tailwindcss/utilities" prefix(ink);
+
+@layer base {
+  @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("./styles/fonts/PlusJakartaSans-VariableFont_wght.ttf");
+  }
+
+  @font-face {
+    font-family: "Departure Mono";
+    src: url("./styles/fonts/DepartureMono-Regular.woff");
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    border: 0px solid;
+    border-radius: 0;
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ink\:font-default * {
+    /** Required for Safari to have proper font weights */
+    font-synthesis: none;
+  }
+
+  @keyframes svg-path-dash {
+    from {
+      stroke-dashoffset: var(--svg-path-dash-offset);
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+@theme {
+  /* Fonts */
+  --font-*: initial;
+  --font-default: var(--ink-base-font-default);
+
+  /* Radius */
+  --radius-*: initial;
+  --radius-full: var(--ink-base-radius-full);
+  --radius-xxl: var(--ink-base-radius-xxl);
+  --radius-xl: var(--ink-base-radius-xl);
+  --radius-lg: var(--ink-base-radius-lg);
+  --radius-md: var(--ink-base-radius-md);
+  --radius-sm: var(--ink-base-radius-sm);
+  --radius-xs: var(--ink-base-radius-xs);
+
+  /* Colors */
+  --color-*: initial;
+  --color-background-dark: var(--ink-background-dark);
+  --color-background-dark-transparent: var(--ink-background-dark-transparent);
+  --color-background-container: var(--ink-background-container);
+  --color-background-light: var(--ink-background-light);
+  --color-background-light-transparent: var(--ink-background-light-transparent);
+  --color-background-light-invisible: var(--ink-background-light-invisible);
+  --color-background-shadow: var(--ink-background-shadow);
+
+  --color-button-primary: var(--ink-button-primary);
+  --color-button-primary-hover: var(--ink-button-primary-hover);
+  --color-button-primary-pressed: var(--ink-button-primary-pressed);
+  --color-button-secondary: var(--ink-button-secondary);
+  --color-button-secondary-hover: var(--ink-button-secondary-hover);
+  --color-button-secondary-pressed: var(--ink-button-secondary-pressed);
+
+  --color-text-default: var(--ink-text-default);
+  --color-text-muted: var(--ink-text-muted);
+  --color-text-on-primary: var(--ink-text-on-primary);
+  --color-text-on-primary-disabled: var(--ink-text-on-primary-disabled);
+  --color-text-on-secondary: var(--ink-text-on-secondary);
+  --color-text-on-secondary-disabled: var(--ink-text-on-secondary-disabled);
+
+  --color-status-success: var(--ink-status-success);
+  --color-status-success-bg: var(--ink-status-success-bg);
+  --color-status-alert: var(--ink-status-alert);
+  --color-status-alert-bg: var(--ink-status-alert-bg);
+  --color-status-error: var(--ink-status-error);
+  --color-status-error-bg: var(--ink-status-error-bg);
+
+  --color-default-app-icon-gradient: var(--ink-default-app-icon-gradient);
+
+  /* Independent Colors */
+  --color-ink-light-purple: var(--ink-color-light-purple);
+  --color-ink-dark-purple: var(--ink-color-dark-purple);
+
+  /* Typography */
+  --text-*: initial;
+
+  --text-display-1: 118px;
+  --text-display-1--line-height: 112px;
+  --text-display-1--font-weight: 500;
+
+  --text-display-2: 96px;
+  --text-display-2--line-height: 96px;
+  --text-display-2--font-weight: 500;
+
+  --text-h1: 72px;
+  --text-h1--line-height: 72px;
+  --text-h1--font-weight: 500;
+
+  --text-h2: 48px;
+  --text-h2--line-height: 48px;
+  --text-h2--font-weight: 500;
+
+  --text-h3: 32px;
+  --text-h3--line-height: 36px;
+  --text-h3--font-weight: 700;
+
+  --text-h4: 24px;
+  --text-h4--line-height: 28px;
+  --text-h4--font-weight: 700;
+
+  --text-h5: 20px;
+  --text-h5--line-height: 24px;
+  --text-h5--font-weight: 700;
+
+  --text-body-1-regular: 18px;
+  --text-body-1-regular--line-height: 24px;
+  --text-body-1-regular--font-weight: 400;
+
+  --text-body-1-bold: 18px;
+  --text-body-1-bold--line-height: 24px;
+  --text-body-1-bold--font-weight: 600;
+
+  --text-body-2-regular: 16px;
+  --text-body-2-regular--line-height: 20px;
+  --text-body-2-regular--font-weight: 400;
+
+  --text-body-2-bold: 16px;
+  --text-body-2-bold--line-height: 20px;
+  --text-body-2-bold--font-weight: 700;
+
+  --text-body-3-regular: 14px;
+  --text-body-3-regular--line-height: 18px;
+  --text-body-3-regular--font-weight: 400;
+
+  --text-body-3-bold: 14px;
+  --text-body-3-bold--line-height: 18px;
+  --text-body-3-bold--font-weight: 700;
+
+  --text-caption-1-regular: 12px;
+  --text-caption-1-regular--line-height: 16px;
+  --text-caption-1-regular--font-weight: 400;
+
+  --text-caption-1-bold: 12px;
+  --text-caption-1-bold--line-height: 16px;
+  --text-caption-1-bold--font-weight: 700;
+
+  --text-caption-2-regular: 11px;
+  --text-caption-2-regular--line-height: 16px;
+  --text-caption-2-regular--font-weight: 400;
+
+  --text-caption-2-bold: 11px;
+  --text-caption-2-bold--line-height: 16px;
+  --text-caption-2-bold--font-weight: 700;
+
+  /* Spacing */
+  --spacing-*: initial;
+  --spacing-0: 0px;
+  --spacing-0_5: 4px;
+  --spacing-1: 8px;
+  --spacing-1_5: 12px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-5: 40px;
+  --spacing-6: 48px;
+  --spacing-8: 64px;
+  --spacing-12: 96px;
+  --spacing-16: 128px;
+
+  /* Shadows */
+  --shadow-*: initial;
+  --shadow-xs: 0px 4px 8px -2px var(--ink-base-shadow-xs-color);
+  --shadow-md: 0px 12px 16px -4px var(--ink-base-shadow-md-color);
+  --shadow-lg: 0px 32px 64px -12px var(--ink-base-shadow-lg-color);
+
+  /* Blur */
+  --blur-*: initial;
+  --blur-sm: var(--ink-base-blur-sm);
+  --blur-lg: var(--ink-base-blur-lg);
+
+  /* Rotation */
+  --rotation-225: 225deg;
+  --rotation-270: 270deg;
+}
+
+@utility transition-default-animation {
+  @apply ink:duration-200 ink:ease-in-out;
+}
+
+/**
+ * For this animation to work, the SVG path must have a stroke attribute.
+ * Set `animate-svg-path` on the Icon element, then apply `animate-svg-path-start` when you want the animation to play (e.g. on hover).
+ */
+@utility animate-svg-path {
+  --svg-path-dash-duration: 0.25s;
+  --svg-path-dash-offset: 24;
+  --svg-path-dash-delay: 0.1s;
+  --svg-path-dash-easing: ease-in-out;
+
+  > path[stroke] {
+    stroke-dasharray: var(--svg-path-dash-offset);
+    stroke-dashoffset: var(--svg-path-dash-offset);
+  }
+}
+
+@utility animate-svg-path-start {
+  > path[stroke] {
+    animation: svg-path-dash var(--svg-path-dash-duration)
+      var(--svg-path-dash-delay) var(--svg-path-dash-easing) forwards;
+  }
+}

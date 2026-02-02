@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { AllIcons } from "./AllIcons";
 
 const meta: Meta<{}> = {
-  title: "Example/Icons",
+  title: "Design/Icons",
   component: AllIcons,
   parameters: {
     layout: "centered",
@@ -21,12 +21,12 @@ export const AllIconsRow: Story = {
 
 export const AllIconsWithColor: Story = {
   args: {
-    containerClassName: "ink-text-primary",
+    containerClassName: "ink:text-button-primary",
   },
 };
 
 export const AllIconsWithDifferentSize: Story = {
   args: {
-    iconClassName: "ink-size-2",
+    iconClassName: "ink:size-2",
   },
 };
